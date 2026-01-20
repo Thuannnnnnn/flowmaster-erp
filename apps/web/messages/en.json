@@ -1,0 +1,13 @@
+{
+  "HomePage": {
+    "title": "Manage your business with FlowMaster",
+    "description": "The comprehensive ERP solution for Vietnamese businesses. Inventory, HR, and Sales all in one place.",
+    "getStarted": "Get Started",
+    "login": "Login to Dashboard"
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "vi": "Vietnamese",
+    "en": "English"
+  }
+}

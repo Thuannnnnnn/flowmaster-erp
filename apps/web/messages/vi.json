@@ -1,0 +1,13 @@
+{
+  "HomePage": {
+    "title": "Quản lý doanh nghiệp cùng FlowMaster",
+    "description": "Giải pháp ERP toàn diện cho doanh nghiệp Việt. Kho vận, Nhân sự và Bán hàng quy về một mối.",
+    "getStarted": "Bắt đầu ngay",
+    "login": "Đăng nhập hệ thống"
+  },
+  "LanguageSwitcher": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "Tiếng Anh"
+  }
+}
