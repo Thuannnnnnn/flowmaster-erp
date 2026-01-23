@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  api:
+    image: flowmaster-api
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_HOST=database-1.cdkmcq6iotlw.ap-southeast-1.rds.amazonaws.com
+      POSTGRES_PORT=5432
+      POSTGRES_USER=flowmaster
+      POSTGRES_PASSWORD=flowmaster
+      POSTGRES_DB=flowmaster_db
+      MONGO_URI=mongodb+srv://awsthuantq_db_user:EmVI6sfzXXxpNB4f@flowmaster.sx3w4aq.mongodb.net/?appName=flowmaster
+      DATABASE_URL='postgresql://neondb_owner:npg_xVdG2QEmA4av@ep-quiet-heart-a1a4fim0-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+      JWT_SECRET='flowmaster'
+
+  web:
+    image: flowmaster-web
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      NEXT_PUBLIC_API_URL=http://localhost:3000
