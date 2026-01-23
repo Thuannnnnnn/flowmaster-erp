@@ -3,6 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+import { HrmModule } from './modules/hrm/hrm.module';
+import { SalesModule } from './modules/sales/sales.module';
+import { PurchasingModule } from './modules/purchasing/purchasing.module';
+import { FinanceModule } from './modules/finance/finance.module';
+import { InventoryModule } from './modules/inventory/inventory.module';
 
 @Module({
   imports: [
@@ -32,6 +38,18 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true, // ⚠️ CẢNH BÁO: Chỉ dùng khi Dev. Nó sẽ tự sửa bảng DB. Tắt khi chạy thật.
       }),
     }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_URI'),
+      }),
+    }),
+    HrmModule,
+    SalesModule,
+    PurchasingModule,
+    FinanceModule,
+    InventoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
