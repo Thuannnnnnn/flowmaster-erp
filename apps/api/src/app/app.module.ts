@@ -9,6 +9,7 @@ import { SalesModule } from './modules/sales/sales.module';
 import { PurchasingModule } from './modules/purchasing/purchasing.module';
 import { FinanceModule } from './modules/finance/finance.module';
 import { InventoryModule } from './modules/inventory/inventory.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { InventoryModule } from './modules/inventory/inventory.module';
     PurchasingModule,
     FinanceModule,
     InventoryModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

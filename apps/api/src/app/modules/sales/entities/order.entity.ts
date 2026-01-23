@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, CreateDateColumn } from 'typeorm';
 import { Customer } from './customer.entity';
 import { OrderItem } from './order-item.entity'
-// Cross-module import
 import { Employee } from '../../hrm/entities/employee.entity';
 
 export enum PaymentMethod {
