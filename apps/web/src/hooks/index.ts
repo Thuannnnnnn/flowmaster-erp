@@ -1,0 +1,1 @@
+export { useAppColor } from "./useAppColor";

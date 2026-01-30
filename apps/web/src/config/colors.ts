@@ -7,11 +7,11 @@ export const appColors = {
 
   // 2. Màu thương hiệu của FlowMaster
   brand: {
-    DEFAULT: "#0F172A", 
+    DEFAULT: "#0F172A",
     light: "#334155",
     dark: "#020617",
   },
-  
+
   // 3. Màu trạng thái
   success: "#22C55E",
   warning: "#F59E0B",
