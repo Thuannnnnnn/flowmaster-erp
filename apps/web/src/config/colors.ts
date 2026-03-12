@@ -1,11 +1,11 @@
 export const appColors = {
-  // 1. Màu hệ thống (Bắt buộc phải có)
+  // 1. Màu hệ thống (Bắt buộc phải có) ok
   transparent: "transparent",
   current: "currentColor",
   white: "#FFFFFF",
   black: "#000000",
 
-  // 2. Màu thương hiệu của FlowMaster
+  // 2. Màu thương hiệu của FlowMaster ok
   brand: {
     DEFAULT: "#0F172A",
     light: "#334155",
