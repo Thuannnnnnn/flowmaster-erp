@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../../components/language-switcher'; // Import component đổi ngữ
 import { Button } from '@/components/ui/button'; // Import nút của Shadcn
+import { Link } from '@/navigation';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -30,8 +31,8 @@ export default function HomePage() {
           <Button size="lg" className="bg-info hover:bg-info/90">
             {t('getStarted')}
           </Button>
-          <Button size="lg" variant="outline">
-            {t('login')}
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/login">{t('login')}</Link>
           </Button>
         </div>
       </div>

@@ -30,9 +30,6 @@ export class Employee {
   @Column({ length: 20, unique: true })
   code: string;
 
-  @Column({ length: 50 })
-  name: string;
-
   @Column({ type: 'date', nullable: true })
   dob: Date;
 

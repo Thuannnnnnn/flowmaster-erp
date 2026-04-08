@@ -5,7 +5,6 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from '../../modules/hrm/entities/user.entity';
 import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService {
@@ -14,28 +13,31 @@ export class AuthService {
     private userRepository: Repository<User>,
     private jwtService: JwtService
   ) {}
-  async register(registerDto: RegisterDto) {
-    const { email, password, full_name } = registerDto;
-
-    const existingUser = await this.userRepository.findOne({ where: { email } });
-    if (existingUser) {
-      throw new ConflictException('Email already exists');
-    }
-    const salt = await bcrypt.genSalt();
-    const password_hash = await bcrypt.hash(password, salt);
-    const user = this.userRepository.create({
-      email,
-      password_hash,
-      full_name,
-    });
-    await this.userRepository.save(user);
-    return { message: 'User registered successfully' };
-  }
   async login(loginDto: LoginDto) {
-    const { email, password } = loginDto;
+    const { code, password } = loginDto;
+
+    const adminCode = process.env.ADMIN_CODE || 'admin';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin';
+
+    if (code === adminCode && password === adminPassword) {
+      const tokens = await this.getTokens('admin-id', adminCode, 'admin');
+      return {
+        access_token: tokens.access_token,
+        refresh_token: tokens.refresh_token,
+        user: {
+          id: 'admin-id',
+          code: code,
+          full_name: 'Administrator',
+          role: { name: 'admin' },
+          avatar_url: null,
+          employee: null
+        }
+      };
+    }
+
     const user = await this.userRepository.findOne({ 
-      where: { email },
-      relations: ['role'] 
+      where: { code },
+      relations: ['role', 'employee', 'employee.department'] 
     });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
@@ -44,7 +46,7 @@ export class AuthService {
     if (!isMatch) {
       throw new UnauthorizedException('Invalid credentials');
     }
-    const tokens = await this.getTokens(user.id, user.email, user.role ? user.role.name : null);
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
     await this.updateRefreshToken(user.id, tokens.refresh_token);
     user.last_login_at = new Date();
     await this.userRepository.update(user.id, { last_login_at: new Date() });
@@ -54,10 +56,11 @@ export class AuthService {
       refresh_token: tokens.refresh_token,
       user: {
         id: user.id,
-        email: user.email,
+        code: user.code,
         full_name: user.full_name,
         role: user.role,
-        avatar_url: user.avatar_url
+        avatar_url: user.avatar_url,
+        employee: user.employee
       }
     };
   }
@@ -76,7 +79,7 @@ export class AuthService {
       throw new UnauthorizedException('Access Denied');
     }
 
-    const tokens = await this.getTokens(user.id, user.email, user.role ? user.role.name : null);
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
     await this.updateRefreshToken(user.id, tokens.refresh_token);
     return tokens;
   }
@@ -86,10 +89,10 @@ export class AuthService {
     await this.userRepository.update(userId, { refresh_token: hash });
   }
 
-  private async getTokens(userId: string, email: string, role: string) {
+  private async getTokens(userId: string, code: string, role: string) {
     const payload = { 
       sub: userId, 
-      email: email, 
+      code: code, 
       role: role 
     };
     const [at, rt] = await Promise.all([
