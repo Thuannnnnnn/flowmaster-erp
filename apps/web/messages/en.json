@@ -9,5 +9,16 @@
     "label": "Language",
     "vi": "Vietnamese",
     "en": "English"
+  },
+  "LoginPage": {
+    "title": "Welcome Back",
+    "description": "Please login with your Code and Password",
+    "codeLabel": "Code",
+    "passwordLabel": "Password",
+    "codePlaceholder": "e.g. admin",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "Sign In",
+    "loginSuccess": "Login successful!",
+    "loginFailed": "Login failed. Please check your Code and password."
   }
 }

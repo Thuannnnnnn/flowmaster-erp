@@ -9,5 +9,16 @@
     "label": "Ngôn ngữ",
     "vi": "Tiếng Việt",
     "en": "Tiếng Anh"
+  },
+  "LoginPage": {
+    "title": "Chào mừng trở lại",
+    "description": "Vui lòng đăng nhập bằng Mã và Mật khẩu của bạn",
+    "codeLabel": "Mã",
+    "passwordLabel": "Mật khẩu",
+    "codePlaceholder": "ví dụ: admin",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "Đăng nhập",
+    "loginSuccess": "Đăng nhập thành công!",
+    "loginFailed": "Đăng nhập thất bại. Vui lòng kiểm tra lại Mã và Mật khẩu."
   }
 }
