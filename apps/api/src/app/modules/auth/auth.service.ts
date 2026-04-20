@@ -1,17 +1,20 @@
-import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';
+
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from '../../modules/hrm/entities/user.entity';
 import { LoginDto } from './dto/login.dto';
+import { RoleService } from '../../modules/hrm/role.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private roleService: RoleService,
   ) {}
   async login(loginDto: LoginDto) {
     const { code, password } = loginDto;
@@ -20,7 +23,7 @@ export class AuthService {
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin';
 
     if (code === adminCode && password === adminPassword) {
-      const tokens = await this.getTokens('admin-id', adminCode, 'admin');
+      const tokens = await this.getTokens('admin-id', adminCode, null);
       return {
         access_token: tokens.access_token,
         refresh_token: tokens.refresh_token,
@@ -30,14 +33,14 @@ export class AuthService {
           full_name: 'Administrator',
           role: { name: 'admin' },
           avatar_url: null,
-          employee: null
-        }
+          employee: null,
+        },
       };
     }
 
-    const user = await this.userRepository.findOne({ 
+    const user = await this.userRepository.findOne({
       where: { code },
-      relations: ['role', 'employee', 'employee.department'] 
+      relations: ['role', 'employee', 'employee.department'],
     });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
@@ -46,11 +49,11 @@ export class AuthService {
     if (!isMatch) {
       throw new UnauthorizedException('Invalid credentials');
     }
-    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.id : null);
     await this.updateRefreshToken(user.id, tokens.refresh_token);
     user.last_login_at = new Date();
     await this.userRepository.update(user.id, { last_login_at: new Date() });
-    
+
     return {
       access_token: tokens.access_token,
       refresh_token: tokens.refresh_token,
@@ -60,8 +63,8 @@ export class AuthService {
         full_name: user.full_name,
         role: user.role,
         avatar_url: user.avatar_url,
-        employee: user.employee
-      }
+        employee: user.employee,
+      },
     };
   }
 
@@ -79,7 +82,7 @@ export class AuthService {
       throw new UnauthorizedException('Access Denied');
     }
 
-    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.id : null);
     await this.updateRefreshToken(user.id, tokens.refresh_token);
     return tokens;
   }
@@ -89,11 +92,18 @@ export class AuthService {
     await this.userRepository.update(userId, { refresh_token: hash });
   }
 
-  private async getTokens(userId: string, code: string, role: string) {
-    const payload = { 
-      sub: userId, 
-      code: code, 
-      role: role 
+  private async getTokens(userId: string, code: string, roleId: number) {
+    let permissions = [];
+    if (roleId) {
+      const role = await this.roleService.findOne(roleId);
+      if (role) {
+        permissions = role.permissions.map(p => p.name);
+      }
+    }
+    const payload = {
+      sub: userId,
+      code: code,
+      permissions,
     };
     const [at, rt] = await Promise.all([
       this.jwtService.signAsync(payload, {

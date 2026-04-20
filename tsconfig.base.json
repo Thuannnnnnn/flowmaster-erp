@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@flowmaster/shared-types": ["libs/shared-types/src/index.ts"]
+      "@flowmaster/shared-types": ["libs/shared-types/src/index.ts"],
+      "@/*": ["apps/web/src/*"]
     }
   },
-  "@/*": ["apps/web/src/*"],
   "exclude": ["node_modules", "tmp"]
 }

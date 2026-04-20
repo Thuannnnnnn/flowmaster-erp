@@ -31,8 +31,7 @@
     "../../apps/web/.next/types/**/*.ts",
     "../../dist/apps/web/.next/types/**/*.ts",
 
-    "next-env.d.ts",
-    "../../libs/shared-types/src/index.ts"
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules",

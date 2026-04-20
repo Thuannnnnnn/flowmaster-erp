@@ -40,117 +40,183 @@ The content is organized as follows:
 </file_summary>
 
 <directory_structure>
+.github/
+  workflows/
+    ci.yml
+apps/
+  api/
+    src/
+      app/
+        modules/
+          auth/
+            dto/
+              login.dto.ts
+            guards/
+              jwt-auth.guard.ts
+              jwt-refresh.guard.ts
+            strategies/
+              jwt-refresh.strategy.ts
+              jwt.strategy.ts
+            auth.controller.ts
+            auth.module.ts
+            auth.service.ts
+          finance/
+            entities/
+              debt.entity.ts
+              transaction.entity.ts
+            finance.module.ts
+          hrm/
+            dto/
+              employee.dto.ts
+              user.dto.ts
+            entities/
+              attendance.entity.ts
+              department.entity.ts
+              employee.entity.ts
+              role.entity.ts
+              user.entity.ts
+            employee.controller.ts
+            employee.service.ts
+            hrm.module.ts
+          inventory/
+            entities/
+              category.entity.ts
+              product.entity.ts
+              stock-movement.entity.ts
+              stock.entity.ts
+              warehouse.entity.ts
+            schemas/
+              product-detail.schema.ts
+            inventory.module.ts
+          purchasing/
+            entities/
+              po-item.entity.ts
+              purchase-order.entity.ts
+              supplier.entity.ts
+            purchasing.module.ts
+          sales/
+            entities/
+              customer.entity.ts
+              order-item.entity.ts
+              order.entity.ts
+            sales.module.ts
+        app.controller.spec.ts
+        app.controller.ts
+        app.module.ts
+        app.service.spec.ts
+        app.service.ts
+      assets/
+        .gitkeep
+      main.ts
+    Dockerfile
+    eslint.config.mjs
+    jest.config.cts
+    project.json
+    tsconfig.app.json
+    tsconfig.json
+    tsconfig.spec.json
+    webpack.config.js
+  api-e2e/
+    src/
+      api/
+        api.spec.ts
+      support/
+        global-setup.ts
+        global-teardown.ts
+        test-setup.ts
+    eslint.config.mjs
+    jest.config.cts
+    project.json
+    tsconfig.json
+    tsconfig.spec.json
+  web/
+    messages/
+      en.json
+      vi.json
+    public/
+      .gitkeep
+      favicon.ico
+    src/
+      app/
+        [locale]/
+          login/
+            page.tsx
+          layout.tsx
+          page.tsx
+        api/
+          auth/
+            route.ts
+          hello/
+            route.ts
+      components/
+        Provider/
+          StoreProvider.tsx
+        ui/
+          button.tsx
+          notification.tsx
+        example-usage.tsx
+        language-switcher.tsx
+      config/
+        colors.js
+        colors.ts
+      hooks/
+        index.ts
+        useAppColor.ts
+      lib/
+        dto/
+          auth.dto.ts
+        api-client.ts
+        utils.ts
+      services/
+        auth.service.ts
+      store/
+        slices/
+          user.slice.ts
+        hooks.ts
+        index.ts
+        rootReducer.ts
+        rootSaga.ts
+      global.css
+      i18n.ts
+      middleware.ts
+      navigation.ts
+    .swcrc
+    Dockerfile
+    eslint.config.mjs
+    index.d.ts
+    next-env.d.ts
+    next.config.js
+    postcss.config.js
+    project.json
+    tailwind.config.js
+    tsconfig.app.json
+    tsconfig.json
+libs/
+  shared-types/
+    src/
+      lib/
+        auth.types.ts
+        finance.types.ts
+        hrm.types.ts
+        inventory.types.ts
+        purchasing.types.ts
+        sales.types.ts
+        shared-types.ts
+      index.ts
+    eslint.config.mjs
+    package.json
+    project.json
+    README.md
+    tsconfig.json
+    tsconfig.lib.json
 .editorconfig
-.github/workflows/ci.yml
 .gitignore
 .prettierignore
 .prettierrc
-apps/api-e2e/eslint.config.mjs
-apps/api-e2e/jest.config.cts
-apps/api-e2e/project.json
-apps/api-e2e/src/api/api.spec.ts
-apps/api-e2e/src/support/global-setup.ts
-apps/api-e2e/src/support/global-teardown.ts
-apps/api-e2e/src/support/test-setup.ts
-apps/api-e2e/tsconfig.json
-apps/api-e2e/tsconfig.spec.json
-apps/api/Dockerfile
-apps/api/eslint.config.mjs
-apps/api/jest.config.cts
-apps/api/project.json
-apps/api/src/app/app.controller.spec.ts
-apps/api/src/app/app.controller.ts
-apps/api/src/app/app.module.ts
-apps/api/src/app/app.service.spec.ts
-apps/api/src/app/app.service.ts
-apps/api/src/app/modules/auth/auth.controller.ts
-apps/api/src/app/modules/auth/auth.module.ts
-apps/api/src/app/modules/auth/auth.service.ts
-apps/api/src/app/modules/auth/dto/login.dto.ts
-apps/api/src/app/modules/auth/dto/register.dto.ts
-apps/api/src/app/modules/auth/guards/jwt-auth.guard.ts
-apps/api/src/app/modules/auth/guards/jwt-refresh.guard.ts
-apps/api/src/app/modules/auth/strategies/jwt-refresh.strategy.ts
-apps/api/src/app/modules/auth/strategies/jwt.strategy.ts
-apps/api/src/app/modules/finance/entities/debt.entity.ts
-apps/api/src/app/modules/finance/entities/transaction.entity.ts
-apps/api/src/app/modules/finance/finance.module.ts
-apps/api/src/app/modules/hrm/entities/attendance.entity.ts
-apps/api/src/app/modules/hrm/entities/department.entity.ts
-apps/api/src/app/modules/hrm/entities/employee.entity.ts
-apps/api/src/app/modules/hrm/entities/role.entity.ts
-apps/api/src/app/modules/hrm/entities/user.entity.ts
-apps/api/src/app/modules/hrm/hrm.module.ts
-apps/api/src/app/modules/inventory/entities/category.entity.ts
-apps/api/src/app/modules/inventory/entities/product.entity.ts
-apps/api/src/app/modules/inventory/entities/stock-movement.entity.ts
-apps/api/src/app/modules/inventory/entities/stock.entity.ts
-apps/api/src/app/modules/inventory/entities/warehouse.entity.ts
-apps/api/src/app/modules/inventory/inventory.module.ts
-apps/api/src/app/modules/inventory/schemas/product-detail.schema.ts
-apps/api/src/app/modules/purchasing/entities/po-item.entity.ts
-apps/api/src/app/modules/purchasing/entities/purchase-order.entity.ts
-apps/api/src/app/modules/purchasing/entities/supplier.entity.ts
-apps/api/src/app/modules/purchasing/purchasing.module.ts
-apps/api/src/app/modules/sales/entities/customer.entity.ts
-apps/api/src/app/modules/sales/entities/order-item.entity.ts
-apps/api/src/app/modules/sales/entities/order.entity.ts
-apps/api/src/app/modules/sales/sales.module.ts
-apps/api/src/assets/.gitkeep
-apps/api/src/main.ts
-apps/api/tsconfig.app.json
-apps/api/tsconfig.json
-apps/api/tsconfig.spec.json
-apps/api/webpack.config.js
-apps/web/.swcrc
-apps/web/Dockerfile
-apps/web/eslint.config.mjs
-apps/web/index.d.ts
-apps/web/messages/en.json
-apps/web/messages/vi.json
-apps/web/next-env.d.ts
-apps/web/next.config.js
-apps/web/postcss.config.js
-apps/web/project.json
-apps/web/public/.gitkeep
-apps/web/public/favicon.ico
-apps/web/src/app/[locale]/layout.tsx
-apps/web/src/app/[locale]/page.tsx
-apps/web/src/app/api/hello/route.ts
-apps/web/src/components/example-usage.tsx
-apps/web/src/components/language-switcher.tsx
-apps/web/src/components/ui/button.tsx
-apps/web/src/config/colors.js
-apps/web/src/config/colors.ts
-apps/web/src/global.css
-apps/web/src/hooks/index.ts
-apps/web/src/hooks/useAppColor.ts
-apps/web/src/i18n.ts
-apps/web/src/lib/api-client.ts
-apps/web/src/lib/utils.ts
-apps/web/src/middleware.ts
-apps/web/src/navigation.ts
-apps/web/tailwind.config.js
-apps/web/tsconfig.app.json
-apps/web/tsconfig.json
 docker-compose.yml
 eslint.config.mjs
 jest.config.ts
 jest.preset.js
-libs/shared-types/eslint.config.mjs
-libs/shared-types/package.json
-libs/shared-types/project.json
-libs/shared-types/README.md
-libs/shared-types/src/index.ts
-libs/shared-types/src/lib/auth.types.ts
-libs/shared-types/src/lib/finance.types.ts
-libs/shared-types/src/lib/hrm.types.ts
-libs/shared-types/src/lib/inventory.types.ts
-libs/shared-types/src/lib/purchasing.types.ts
-libs/shared-types/src/lib/sales.types.ts
-libs/shared-types/src/lib/shared-types.ts
-libs/shared-types/tsconfig.json
-libs/shared-types/tsconfig.lib.json
 nx.json
 package.json
 README.md
@@ -160,705 +226,44 @@ tsconfig.base.json
 <files>
 This section contains the contents of the repository's files.
 
-<file path=".editorconfig">
-# Editor configuration, see http://editorconfig.org
-root = true
+<file path="apps/web/src/store/slices/user.slice.ts">
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthResponse } from '@flowmaster/shared-types';
 
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-insert_final_newline = true
-trim_trailing_whitespace = true
+// Define the type for this slice's state
+type UserState = {
+  token: AuthResponse | null;
+  isLoggedIn: boolean;
+};
 
-[*.md]
-max_line_length = off
-trim_trailing_whitespace = false
-</file>
+// Initial state
+const initialState: UserState = {
+  token: null,
+  isLoggedIn: false,
+};
 
-<file path=".github/workflows/ci.yml">
-
-</file>
-
-<file path=".gitignore">
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# compiled output
-dist
-tmp
-out-tsc
-
-# dependencies
-node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
-.DS_Store
-Thumbs.db
-
-.nx/cache
-.nx/workspace-data
-
-# Next.js
-.next
-out
-
-#env
-.env
-</file>
-
-<file path=".prettierignore">
-# Add files here to ignore them from prettier formatting
-/dist
-/coverage
-/.nx/cache
-/.nx/workspace-data
-</file>
-
-<file path=".prettierrc">
-{
-  "singleQuote": true
-}
-</file>
-
-<file path="apps/api-e2e/eslint.config.mjs">
-import baseConfig from '../../eslint.config.mjs';
-
-export default [...baseConfig];
-</file>
-
-<file path="apps/api-e2e/jest.config.cts">
-export default {
-  displayName: 'api-e2e',
-  preset: '../../jest.preset.js',
-  globalSetup: '<rootDir>/src/support/global-setup.ts',
-  globalTeardown: '<rootDir>/src/support/global-teardown.ts',
-  setupFiles: ['<rootDir>/src/support/test-setup.ts'],
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.[tj]s$': [
-      'ts-jest',
-      {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-      },
-    ],
+const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    // Reducer to update user info upon successful login
+    setLoginSuccess(state, action: PayloadAction<AuthResponse>) {
+      state.token = action.payload;
+      state.isLoggedIn = true;
+    },
+    // Reducer to reset state on logout
+    setLogout(state) {
+      state.token = null;
+      state.isLoggedIn = false;
+    },
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/api-e2e',
-};
-</file>
-
-<file path="apps/api-e2e/project.json">
-{
-  "name": "api-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "implicitDependencies": ["api"],
-  "targets": {
-    "e2e": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
-      "options": {
-        "jestConfig": "apps/api-e2e/jest.config.cts",
-        "passWithNoTests": true
-      },
-      "dependsOn": ["api:build", "api:serve"]
-    }
-  }
-}
-</file>
-
-<file path="apps/api-e2e/src/api/api.spec.ts">
-import axios from 'axios';
-
-describe('GET /api', () => {
-  it('should return a message', async () => {
-    const res = await axios.get(`/api`);
-
-    expect(res.status).toBe(200);
-    expect(res.data).toEqual({ message: 'Hello API' });
-  });
 });
-</file>
 
-<file path="apps/api-e2e/src/support/global-setup.ts">
-import { waitForPortOpen } from '@nx/node/utils';
+// Export actions for use in components
+export const { setLoginSuccess, setLogout } = userSlice.actions;
 
-/* eslint-disable */
-var __TEARDOWN_MESSAGE__: string;
-
-module.exports = async function () {
-  // Start services that that the app needs to run (e.g. database, docker-compose, etc.).
-  console.log('\nSetting up...\n');
-
-  const host = process.env.HOST ?? 'localhost';
-  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-  await waitForPortOpen(port, { host });
-
-  // Hint: Use `globalThis` to pass variables to global teardown.
-  globalThis.__TEARDOWN_MESSAGE__ = '\nTearing down...\n';
-};
-</file>
-
-<file path="apps/api-e2e/src/support/global-teardown.ts">
-import { killPort } from '@nx/node/utils';
-/* eslint-disable */
-
-module.exports = async function () {
-  // Put clean up logic here (e.g. stopping services, docker-compose, etc.).
-  // Hint: `globalThis` is shared between setup and teardown.
-  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-  await killPort(port);
-  console.log(globalThis.__TEARDOWN_MESSAGE__);
-};
-</file>
-
-<file path="apps/api-e2e/src/support/test-setup.ts">
-/* eslint-disable */
-import axios from 'axios';
-
-module.exports = async function () {
-  // Configure axios for tests to use.
-  const host = process.env.HOST ?? 'localhost';
-  const port = process.env.PORT ?? '3000';
-  axios.defaults.baseURL = `http://${host}:${port}`;
-};
-</file>
-
-<file path="apps/api-e2e/tsconfig.json">
-{
-  "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true
-  }
-}
-</file>
-
-<file path="apps/api-e2e/tsconfig.spec.json">
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["jest", "node"]
-  },
-  "include": ["jest.config.ts", "src/**/*.ts"]
-}
-</file>
-
-<file path="apps/api/Dockerfile">
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --legacy-peer-deps
-COPY . .
-RUN npx nx build api --prod
-FROM node:20-alpine AS runner
-WORKDIR /app
-COPY --from=builder /app/dist/apps/api ./
-RUN npm install --omit=dev --force
-ENV PORT=3000
-ENV NODE_ENV=production
-EXPOSE 3000
-CMD ["node", "main.js"]
-</file>
-
-<file path="apps/api/eslint.config.mjs">
-import baseConfig from '../../eslint.config.mjs';
-
-export default [...baseConfig];
-</file>
-
-<file path="apps/api/jest.config.cts">
-module.exports = {
-  displayName: 'api',
-  preset: '../../jest.preset.js',
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
-  },
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/api',
-};
-</file>
-
-<file path="apps/api/project.json">
-{
-  "name": "api",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/src",
-  "projectType": "application",
-  "tags": [],
-  "targets": {
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "webpack-cli build",
-        "args": ["--node-env=production"],
-        "cwd": "apps/api"
-      },
-      "configurations": {
-        "development": {
-          "args": ["--node-env=development"]
-        }
-      }
-    },
-    "prune-lockfile": {
-      "dependsOn": ["build"],
-      "cache": true,
-      "executor": "@nx/js:prune-lockfile",
-      "outputs": [
-        "{workspaceRoot}/dist/apps/api/package.json",
-        "{workspaceRoot}/dist/apps/api/package-lock.json"
-      ],
-      "options": {
-        "buildTarget": "build"
-      }
-    },
-    "copy-workspace-modules": {
-      "dependsOn": ["build"],
-      "cache": true,
-      "outputs": ["{workspaceRoot}/dist/apps/api/workspace_modules"],
-      "executor": "@nx/js:copy-workspace-modules",
-      "options": {
-        "buildTarget": "build"
-      }
-    },
-    "prune": {
-      "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
-      "executor": "nx:noop"
-    },
-    "serve": {
-      "continuous": true,
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "dependsOn": ["build"],
-      "options": {
-        "buildTarget": "api:build",
-        "runBuildTargetDependencies": false
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "api:build:development"
-        },
-        "production": {
-          "buildTarget": "api:build:production"
-        }
-      }
-    },
-    "test": {
-      "options": {
-        "passWithNoTests": true
-      }
-    }
-  }
-}
-</file>
-
-<file path="apps/api/src/app/app.controller.spec.ts">
-import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-describe('AppController', () => {
-  let app: TestingModule;
-
-  beforeAll(async () => {
-    app = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
-    }).compile();
-  });
-
-  describe('getData', () => {
-    it('should return "Hello API"', () => {
-      const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({ message: 'Hello API' });
-    });
-  });
-});
-</file>
-
-<file path="apps/api/src/app/app.controller.ts">
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get()
-  getData() {
-    return this.appService.getData();
-  }
-}
-</file>
-
-<file path="apps/api/src/app/app.module.ts">
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { MongooseModule } from '@nestjs/mongoose';
-import { HrmModule } from './modules/hrm/hrm.module';
-import { SalesModule } from './modules/sales/sales.module';
-import { PurchasingModule } from './modules/purchasing/purchasing.module';
-import { FinanceModule } from './modules/finance/finance.module';
-import { InventoryModule } from './modules/inventory/inventory.module';
-import { AuthModule } from './modules/auth/auth.module';
-
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: '.env',
-    }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        // host: config.get('POSTGRES_HOST'),
-        // port: +config.get('POSTGRES_PORT'),
-        // username: config.get('POSTGRES_USER'),
-        // password: config.get('POSTGRES_PASSWORD'),
-        // database: config.get('POSTGRES_DB'),
-        url: config.get<string>('DATABASE_URL'),
-
-        ssl: true,
-        extra: {
-          ssl: {
-            rejectUnauthorized: false,
-          },
-        },
-        autoLoadEntities: true,
-        synchronize: true, // ⚠️ CẢNH BÁO: Chỉ dùng khi Dev. Nó sẽ tự sửa bảng DB. Tắt khi chạy thật.
-      }),
-    }),
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('MONGO_URI'),
-      }),
-    }),
-    HrmModule,
-    SalesModule,
-    PurchasingModule,
-    FinanceModule,
-    InventoryModule,
-    AuthModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}
-</file>
-
-<file path="apps/api/src/app/app.service.spec.ts">
-import { Test } from '@nestjs/testing';
-import { AppService } from './app.service';
-
-describe('AppService', () => {
-  let service: AppService;
-
-  beforeAll(async () => {
-    const app = await Test.createTestingModule({
-      providers: [AppService],
-    }).compile();
-
-    service = app.get<AppService>(AppService);
-  });
-
-  describe('getData', () => {
-    it('should return "Hello API"', () => {
-      expect(service.getData()).toEqual({ message: 'Hello API' });
-    });
-  });
-});
-</file>
-
-<file path="apps/api/src/app/app.service.ts">
-import { Injectable } from '@nestjs/common';
-
-@Injectable()
-export class AppService {
-  getData(): { message: string } {
-    return { message: 'Hello APII' };
-  }
-}
-</file>
-
-<file path="apps/api/src/app/modules/auth/auth.controller.ts">
-import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
-import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
-
-@ApiTags('Auth')
-@Controller('auth')
-export class AuthController {
-  constructor(private authService: AuthService) {}
-
-  @ApiOperation({ summary: 'Register a new user' })
-  @ApiResponse({ status: 201, description: 'The user has been successfully created.' })
-  @ApiResponse({ status: 409, description: 'Email already exists.' })
-  @Post('register')
-  async register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto);
-  }
-
-  @ApiOperation({ summary: 'User login' })
-  @ApiResponse({ status: 200, description: 'Return access token and user info.' })
-  @ApiResponse({ status: 401, description: 'Invalid credentials.' })
-  @HttpCode(HttpStatus.OK)
-  @Post('login')
-  async login(@Body() loginDto: LoginDto) {
-    return this.authService.login(loginDto);
-  }
-
-  @UseGuards(JwtRefreshGuard)
-  @HttpCode(HttpStatus.OK)
-  @Post('refresh')
-  @ApiOperation({ summary: 'Refresh access token' })
-  @ApiResponse({ status: 200, description: 'Return new tokens.' })
-  @ApiResponse({ status: 401, description: 'Invalid refresh token.' })
-  @ApiBearerAuth()
-  refresh(@Req() req) {
-    const userId = req.user['sub'];
-    const refreshToken = req.user['refreshToken'];
-    return this.authService.refreshTokens(userId, refreshToken);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @HttpCode(HttpStatus.OK)
-  @Post('logout')
-  @ApiOperation({ summary: 'Logout user' })
-  @ApiResponse({ status: 200, description: 'User logged out.' })
-  @ApiBearerAuth()
-  async logout(@Req() req) {
-    const userId = req.user['userId'] || req.user['sub'];
-    return this.authService.logout(userId);
-  }
-}
-</file>
-
-<file path="apps/api/src/app/modules/auth/auth.module.ts">
-import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from '@nestjs/passport';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
-import { JwtStrategy } from './strategies/jwt.strategy';
-import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
-import { HrmModule } from '../hrm/hrm.module';
-
-@Module({
-  imports: [
-    HrmModule,
-    PassportModule,
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET') || 'secretKey',
-        signOptions: { expiresIn: '1d' },
-      }),
-    }),
-  ],
-  controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, JwtRefreshStrategy],
-  exports: [AuthService],
-})
-export class AuthModule {}
-</file>
-
-<file path="apps/api/src/app/modules/auth/auth.service.ts">
-import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
-import { User } from '../../modules/hrm/entities/user.entity';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
-
-@Injectable()
-export class AuthService {
-  constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
-    private jwtService: JwtService
-  ) {}
-  async register(registerDto: RegisterDto) {
-    const { email, password, full_name } = registerDto;
-
-    const existingUser = await this.userRepository.findOne({ where: { email } });
-    if (existingUser) {
-      throw new ConflictException('Email already exists');
-    }
-    const salt = await bcrypt.genSalt();
-    const password_hash = await bcrypt.hash(password, salt);
-    const user = this.userRepository.create({
-      email,
-      password_hash,
-      full_name,
-    });
-    await this.userRepository.save(user);
-    return { message: 'User registered successfully' };
-  }
-  async login(loginDto: LoginDto) {
-    const { email, password } = loginDto;
-    const user = await this.userRepository.findOne({ 
-      where: { email },
-      relations: ['role'] 
-    });
-    if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
-    const isMatch = await bcrypt.compare(password, user.password_hash);
-    if (!isMatch) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
-    const tokens = await this.getTokens(user.id, user.email, user.role ? user.role.name : null);
-    await this.updateRefreshToken(user.id, tokens.refresh_token);
-    user.last_login_at = new Date();
-    await this.userRepository.update(user.id, { last_login_at: new Date() });
-    
-    return {
-      access_token: tokens.access_token,
-      refresh_token: tokens.refresh_token,
-      user: {
-        id: user.id,
-        email: user.email,
-        full_name: user.full_name,
-        role: user.role,
-        avatar_url: user.avatar_url
-      }
-    };
-  }
-
-  async logout(userId: string) {
-    await this.userRepository.update(userId, { refresh_token: null });
-  }
-  async refreshTokens(userId: string, refreshToken: string) {
-    const user = await this.userRepository.findOne({ where: { id: userId }, relations: ['role'] });
-    if (!user || !user.refresh_token) {
-      throw new UnauthorizedException('Access Denied');
-    }
-
-    const refreshTokenMatches = await bcrypt.compare(refreshToken, user.refresh_token);
-    if (!refreshTokenMatches) {
-      throw new UnauthorizedException('Access Denied');
-    }
-
-    const tokens = await this.getTokens(user.id, user.email, user.role ? user.role.name : null);
-    await this.updateRefreshToken(user.id, tokens.refresh_token);
-    return tokens;
-  }
-
-  private async updateRefreshToken(userId: string, refreshToken: string) {
-    const hash = await bcrypt.hash(refreshToken, 10);
-    await this.userRepository.update(userId, { refresh_token: hash });
-  }
-
-  private async getTokens(userId: string, email: string, role: string) {
-    const payload = { 
-      sub: userId, 
-      email: email, 
-      role: role 
-    };
-    const [at, rt] = await Promise.all([
-      this.jwtService.signAsync(payload, {
-        expiresIn: '15m',
-        secret: process.env.JWT_SECRET || 'secretKey',
-      }),
-      this.jwtService.signAsync(payload, {
-        expiresIn: '7d',
-        secret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'secretKey',
-      }),
-    ]);
-    return {
-      access_token: at,
-      refresh_token: rt,
-    };
-  }
-}
-</file>
-
-<file path="apps/api/src/app/modules/auth/dto/login.dto.ts">
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
-
-export class LoginDto {
-  @ApiProperty({ example: 'user@example.com', description: 'The email of the user' })
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
-  @ApiProperty({ example: 'password123', description: 'The password of the user', minLength: 6 })
-  @IsNotEmpty()
-  @MinLength(6)
-  password: string;
-}
-</file>
-
-<file path="apps/api/src/app/modules/auth/dto/register.dto.ts">
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
-
-export class RegisterDto {
-  @ApiProperty({ example: 'user@example.com', description: 'The email of the user' })
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
-  @ApiProperty({ example: 'password123', description: 'The password of the user', minLength: 6 })
-  @IsNotEmpty()
-  @MinLength(6)
-  password: string;
-
-  @ApiProperty({ example: 'John Doe', description: 'The full name of the user' })
-  @IsNotEmpty()
-  full_name: string;
-}
+// Export the reducer to be added to the main store
+export default userSlice.reducer;
 </file>
 
 <file path="apps/api/src/app/modules/auth/guards/jwt-auth.guard.ts">
@@ -900,26 +305,35 @@ export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh'
 }
 </file>
 
-<file path="apps/api/src/app/modules/auth/strategies/jwt.strategy.ts">
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PassportStrategy } from '@nestjs/passport';
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+<file path="apps/api/src/app/modules/auth/auth.module.ts">
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthService } from './auth.service';
+import { AuthController } from './auth.controller';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
+import { HrmModule } from '../hrm/hrm.module';
 
-@Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private configService: ConfigService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_SECRET') || 'secretKey',
-    });
-  }
-
-  async validate(payload: any) {
-    return { userId: payload.sub, email: payload.email, role: payload.role };
-  }
-}
+@Module({
+  imports: [
+    HrmModule,
+    PassportModule,
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET') || 'secretKey',
+        signOptions: { expiresIn: '1d' },
+      }),
+    }),
+  ],
+  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy, JwtRefreshStrategy],
+  exports: [AuthService],
+})
+export class AuthModule {}
 </file>
 
 <file path="apps/api/src/app/modules/finance/entities/debt.entity.ts">
@@ -1042,6 +456,114 @@ import { Debt } from './entities/debt.entity';
 export class FinanceModule {}
 </file>
 
+<file path="apps/api/src/app/modules/hrm/dto/employee.dto.ts">
+import { IsNotEmpty, IsString, IsOptional, IsEnum, IsDateString, IsNumber, IsUUID, MinLength, IsInt, Min } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional, PartialType } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { Gender } from '../entities/employee.entity';
+
+/**
+ * DTO cho việc tạo mới nhân viên (CREATE)
+ */
+export class CreateEmployeeDto {
+  @ApiProperty({ example: 'NV001', description: 'Mã nhân viên duy nhất' })
+  @IsString()
+  @IsNotEmpty()
+  code: string;
+
+  @ApiProperty({ example: 'Nguyễn Văn A', description: 'Họ và tên' })
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(3)
+  name: string;
+
+  @ApiPropertyOptional({ example: '1995-05-15' })
+  @IsDateString()
+  @IsOptional()
+  dob?: Date;
+
+  @ApiPropertyOptional({ enum: Gender, example: Gender.MALE })
+  @IsEnum(Gender)
+  @IsOptional()
+  gender?: Gender;
+
+  @ApiPropertyOptional({ example: '123 Đường ABC, Quận 1, TP.HCM' })
+  @IsString()
+  @IsOptional()
+  address?: string;
+
+  @ApiPropertyOptional({ example: '2024-01-01' })
+  @IsDateString()
+  @IsOptional()
+  hire_date?: Date;
+
+  @ApiPropertyOptional({ example: '0011000123456' })
+  @IsString()
+  @IsOptional()
+  bank_account?: string;
+
+  @ApiPropertyOptional({ example: 'Vietcombank' })
+  @IsString()
+  @IsOptional()
+  bank_name?: string;
+
+  @ApiProperty({ example: 15000000 })
+  @IsNumber()
+  @IsNotEmpty()
+  base_salary: number;
+
+  @ApiPropertyOptional({ example: 1 })
+  @IsNumber()
+  @IsOptional()
+  department_id?: number;
+
+  @ApiPropertyOptional({ example: 'uuid-string-here' })
+  @IsUUID()
+  @IsOptional()
+  user_id?: string;
+}
+
+/**
+ * DTO cho việc cập nhật nhân viên (UPDATE)
+ * Kế thừa từ CreateEmployeeDto và biến tất cả các trường thành tùy chọn
+ */
+export class UpdateEmployeeDto extends PartialType(CreateEmployeeDto) {}
+
+/**
+ * DTO cho việc truy vấn danh sách (READ/QUERY)
+ */
+export class QueryEmployeeDto {
+  @ApiPropertyOptional({ description: 'Tìm kiếm theo tên hoặc mã' })
+  @IsOptional()
+  @IsString()
+  search?: string;
+
+  @ApiPropertyOptional({ description: 'Lọc theo ID phòng ban' })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  department_id?: number;
+
+  @ApiPropertyOptional({ default: 1 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  page?: number = 1;
+
+  @ApiPropertyOptional({ default: 10 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  limit?: number = 10;
+}
+</file>
+
+<file path="apps/api/src/app/modules/hrm/dto/user.dto.ts">
+
+</file>
+
 <file path="apps/api/src/app/modules/hrm/entities/attendance.entity.ts">
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Employee } from './employee.entity';
@@ -1104,68 +626,6 @@ export class Department {
 }
 </file>
 
-<file path="apps/api/src/app/modules/hrm/entities/employee.entity.ts">
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany } from 'typeorm';
-import { Department } from './department.entity';
-import { User } from './user.entity'
-import { Attendance } from './attendance.entity';
-
-export enum Gender {
-  MALE = 'Male',
-  FEMALE = 'Female',
-}
-
-@Entity('employees')
-export class Employee {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ type: 'uuid', nullable: true })
-  user_id: string;
-
-  @OneToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
-
-  @Column({ type: 'int', nullable: true })
-  department_id: number;
-
-  @ManyToOne(() => Department, (dept) => dept.employees)
-  @JoinColumn({ name: 'department_id' })
-  department: Department;
-
-  @Column({ length: 20, unique: true })
-  code: string;
-
-  @Column({ length: 50 })
-  name: string;
-
-  @Column({ type: 'date', nullable: true })
-  dob: Date;
-
-  @Column({ type: 'enum', enum: Gender, nullable: true })
-  gender: Gender;
-
-  @Column({ type: 'text', nullable: true })
-  address: string;
-
-  @Column({ type: 'date', nullable: true })
-  hire_date: Date;
-
-  @Column({ length: 50, nullable: true })
-  bank_account: string;
-
-  @Column({ length: 100, nullable: true })
-  bank_name: string;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  base_salary: number;
-
-  @OneToMany(() => Attendance, (attendance) => attendance.employee)
-  attendances: Attendance[];
-}
-</file>
-
 <file path="apps/api/src/app/modules/hrm/entities/role.entity.ts">
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
@@ -1191,85 +651,47 @@ export class Role {
 }
 </file>
 
-<file path="apps/api/src/app/modules/hrm/entities/user.entity.ts">
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Role } from './role.entity';
+<file path="apps/api/src/app/modules/hrm/employee.controller.ts">
+/*
+https://docs.nestjs.com/controllers#controllers
+*/
 
-@Entity('users')
-export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+import { Controller } from '@nestjs/common';
 
-  @Column({ length: 100, unique: true })
-  email: string;
-
-  @Column({ length: 255 })
-  password_hash: string;
-
-  @Column({ length: 100 })
-  full_name: string;
-
-  @Column({ length: 255, nullable: true })
-  avatar_url: string;
-
-  @Column({ type: 'timestamp', nullable: true })
-  last_login_at: Date;
-
-  @Column({ length: 500, nullable: true })
-  refresh_token: string;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  // Relation defined in image: User has Roles (or Role). Image shows "has" -> Roles. 
-  // Probably ManyToOne if User has 1 role, or ManyToMany if multiple. 
-  // Image diagram typically shows simpler relations. Let's assume ManyToOne for simplicity based on typical ERP User-Role, or join table if ManyToMany.
-  // The line "has" connects Users and Roles. 
-  // But wait, the Users table doesn't explicitly show `role_id`. 
-  // However, normally users have roles. I'll add ManyToMany or ManyToOne. 
-  // Let's assume ManyToMany for flexibility or keep it simple with ManyToOne if usage suggests single role. 
-  // Given "Roles" table usually implies reference. Let's assume ManyToMany and a join table, OR `role_id` column.
-  // I will add a relation without a column property if it's implicit, or just ManyToOne.
-  // I'll stick to ManyToMany usually, but let's check `Employees`. 
-  // Ah, the image doesn't show a foreign key column in `Users` for `role_id`.
-  // Wait, let me re-read the image. 
-  // `Users` table: email, password_hash, ...
-  // `Roles` table: id, name, ...
-  // Connection line "has".
-  // `Employees` has `user_id`.
-  // I will use ManyToMany.
-  
-  @ManyToOne(() => Role)
-  @JoinColumn({ name: 'role_id' }) // Assuming single role for now for simplicity unless specified
-  role: Role;
-}
+@Controller()
+export class EmployeeController {}
 </file>
 
-<file path="apps/api/src/app/modules/hrm/hrm.module.ts">
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Department } from './entities/department.entity';
-import { Employee } from './entities/employee.entity';
-import { User } from './entities/user.entity';
-import { Role } from './entities/role.entity';
-import { Attendance } from './entities/attendance.entity';
+<file path="apps/api/src/app/modules/hrm/employee.service.ts">
+/*
+https://docs.nestjs.com/providers#services
+*/
 
-@Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      Department,
-      Employee,
-      User,
-      Role,
-      Attendance
-    ])
-  ],
-  exports: [TypeOrmModule]
-})
-export class HrmModule {}
+import { Injectable } from '@nestjs/common';
+import { Employee } from './entities/employee.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CreateEmployeeDto } from './dto/employee.dto';
+@Injectable()
+export class EmployeeService {
+
+  constructor(@InjectRepository(Employee)
+  private employeeRepository: Repository<Employee>
+) {}
+  create(createEmployeeDto: CreateEmployeeDto): Promise<Employee> {
+    const employee = this.employeeRepository.create(createEmployeeDto);
+    return this.employeeRepository.save(employee);
+  }
+  findAllEmployees(): Promise<Employee[]> {
+    return this.employeeRepository.find({ relations: ['department', 'user'] });
+  }
+  findOneEmployee(id: string): Promise<Employee> {
+  return this.employeeRepository.findOne({
+    where: { id: id },
+    relations: ['department', 'user']
+  });
+}
+}
 </file>
 
 <file path="apps/api/src/app/modules/inventory/entities/category.entity.ts">
@@ -1473,35 +895,6 @@ export class Warehouse {
 }
 </file>
 
-<file path="apps/api/src/app/modules/inventory/inventory.module.ts">
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Category } from './entities/category.entity';
-import { Product } from './entities/product.entity';
-import { Warehouse } from './entities/warehouse.entity';
-import { Stock } from './entities/stock.entity';
-import { StockMovement } from './entities/stock-movement.entity';
-import { ProductDetail, ProductDetailSchema } from './schemas/product-detail.schema';
-
-@Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      Category,
-      Product,
-      Warehouse,
-      Stock,
-      StockMovement
-    ]),
-    MongooseModule.forFeature([
-      { name: ProductDetail.name, schema: ProductDetailSchema }
-    ])
-  ],
-  exports: [TypeOrmModule, MongooseModule]
-})
-export class InventoryModule {}
-</file>
-
 <file path="apps/api/src/app/modules/inventory/schemas/product-detail.schema.ts">
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
@@ -1530,6 +923,35 @@ export class ProductDetail {
 }
 
 export const ProductDetailSchema = SchemaFactory.createForClass(ProductDetail);
+</file>
+
+<file path="apps/api/src/app/modules/inventory/inventory.module.ts">
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Category } from './entities/category.entity';
+import { Product } from './entities/product.entity';
+import { Warehouse } from './entities/warehouse.entity';
+import { Stock } from './entities/stock.entity';
+import { StockMovement } from './entities/stock-movement.entity';
+import { ProductDetail, ProductDetailSchema } from './schemas/product-detail.schema';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      Category,
+      Product,
+      Warehouse,
+      Stock,
+      StockMovement
+    ]),
+    MongooseModule.forFeature([
+      { name: ProductDetail.name, schema: ProductDetailSchema }
+    ])
+  ],
+  exports: [TypeOrmModule, MongooseModule]
+})
+export class InventoryModule {}
 </file>
 
 <file path="apps/api/src/app/modules/purchasing/entities/po-item.entity.ts">
@@ -1780,91 +1202,6 @@ export class OrderItem {
 }
 </file>
 
-<file path="apps/api/src/app/modules/sales/entities/order.entity.ts">
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, CreateDateColumn } from 'typeorm';
-import { Customer } from './customer.entity';
-import { OrderItem } from './order-item.entity'
-import { Employee } from '../../hrm/entities/employee.entity';
-
-export enum PaymentMethod {
-  CASH = 'Cash',
-  BANK = 'Bank',
-  COD = 'COD',
-}
-
-export enum PaymentStatus {
-  UNPAID = 'Unpaid',
-  PARTIAL = 'Partial',
-  PAID = 'Paid',
-}
-
-export enum OrderStatus {
-  PENDING = 'Pending',
-  SHIPPING = 'Shipping',
-  COMPLETED = 'Completed',
-  CANCELLED = 'Cancelled',
-}
-
-@Entity('orders')
-export class Order {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ length: 20, unique: true })
-  code: string;
-
-  @Column({ type: 'uuid' })
-  customer_id: string;
-
-  @ManyToOne(() => Customer, (customer) => customer.orders)
-  @JoinColumn({ name: 'customer_id' })
-  customer: Customer;
-
-  @Column({ type: 'uuid', nullable: true })
-  sales_staff_id: string;
-
-  @ManyToOne(() => Employee)
-  @JoinColumn({ name: 'sales_staff_id' })
-  sales_staff: Employee;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  sub_total: number;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  discount_amount: number;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  tax_amount: number;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  shipping_fee: number;
-
-  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
-  total_amount: number;
-
-  @Column({ type: 'enum', enum: PaymentMethod, nullable: true })
-  payment_method: PaymentMethod;
-
-  @Column({ type: 'enum', enum: PaymentStatus, default: PaymentStatus.UNPAID })
-  payment_status: PaymentStatus;
-
-  @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.PENDING })
-  order_status: OrderStatus;
-
-  @Column({ type: 'text', nullable: true })
-  shipping_address: string;
-
-  @Column({ type: 'text', nullable: true })
-  note: string;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @OneToMany(() => OrderItem, (item) => item.order)
-  items: OrderItem[];
-}
-</file>
-
 <file path="apps/api/src/app/modules/sales/sales.module.ts">
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -1885,46 +1222,190 @@ import { OrderItem } from './entities/order-item.entity';
 export class SalesModule {}
 </file>
 
+<file path="apps/api/src/app/app.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+describe('AppController', () => {
+  let app: TestingModule;
+
+  beforeAll(async () => {
+    app = await Test.createTestingModule({
+      controllers: [AppController],
+      providers: [AppService],
+    }).compile();
+  });
+
+  describe('getData', () => {
+    it('should return "Hello API"', () => {
+      const appController = app.get<AppController>(AppController);
+      expect(appController.getData()).toEqual({ message: 'Hello API' });
+    });
+  });
+});
+</file>
+
+<file path="apps/api/src/app/app.controller.ts">
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getData() {
+    return this.appService.getData();
+  }
+}
+</file>
+
+<file path="apps/api/src/app/app.service.spec.ts">
+import { Test } from '@nestjs/testing';
+import { AppService } from './app.service';
+
+describe('AppService', () => {
+  let service: AppService;
+
+  beforeAll(async () => {
+    const app = await Test.createTestingModule({
+      providers: [AppService],
+    }).compile();
+
+    service = app.get<AppService>(AppService);
+  });
+
+  describe('getData', () => {
+    it('should return "Hello API"', () => {
+      expect(service.getData()).toEqual({ message: 'Hello API' });
+    });
+  });
+});
+</file>
+
+<file path="apps/api/src/app/app.service.ts">
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  getData(): { message: string } {
+    return { message: 'Hello APII' };
+  }
+}
+</file>
+
 <file path="apps/api/src/assets/.gitkeep">
 
 </file>
 
-<file path="apps/api/src/main.ts">
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+<file path="apps/api/Dockerfile">
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
+COPY . .
+RUN npx nx build api --prod
+FROM node:20-alpine AS runner
+WORKDIR /app
+COPY --from=builder /app/dist/apps/api ./
+RUN npm install --omit=dev --force
+ENV PORT=3000
+ENV NODE_ENV=production
+EXPOSE 3000
+CMD ["node", "main.js"]
+</file>
 
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './app/app.module';
+<file path="apps/api/eslint.config.mjs">
+import baseConfig from '../../eslint.config.mjs';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
+export default [...baseConfig];
+</file>
 
-  const config = new DocumentBuilder()
-    .setTitle('FlowMaster ERP API')
-    .setDescription('The FlowMaster ERP API description')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
+<file path="apps/api/jest.config.cts">
+module.exports = {
+  displayName: 'api',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/api',
+};
+</file>
 
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
-  Logger.log(
-    `📄 Swagger documentation is available at: http://localhost:${port}/api/docs`
-  );
+<file path="apps/api/project.json">
+{
+  "name": "api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["--node-env=production"],
+        "cwd": "apps/api"
+      },
+      "configurations": {
+        "development": {
+          "args": ["--node-env=development"]
+        }
+      }
+    },
+    "prune-lockfile": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "executor": "@nx/js:prune-lockfile",
+      "outputs": [
+        "{workspaceRoot}/dist/apps/api/package.json",
+        "{workspaceRoot}/dist/apps/api/package-lock.json"
+      ],
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "copy-workspace-modules": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "outputs": ["{workspaceRoot}/dist/apps/api/workspace_modules"],
+      "executor": "@nx/js:copy-workspace-modules",
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "prune": {
+      "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
+      "executor": "nx:noop"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api:build:development"
+        },
+        "production": {
+          "buildTarget": "api:build:production"
+        }
+      }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    }
+  }
 }
-
-bootstrap();
 </file>
 
 <file path="apps/api/tsconfig.app.json">
@@ -1991,290 +1472,135 @@ bootstrap();
 }
 </file>
 
-<file path="apps/api/webpack.config.js">
-const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
-const { join } = require('path');
+<file path="apps/api-e2e/src/api/api.spec.ts">
+import axios from 'axios';
 
-module.exports = {
-  output: {
-    path: join(__dirname, '../../dist/apps/api'),
-    clean: true,
-    ...(process.env.NODE_ENV !== 'production' && {
-      devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    }),
-  },
-  plugins: [
-    new NxAppWebpackPlugin({
-      target: 'node',
-      compiler: 'tsc',
-      main: './src/main.ts',
-      tsConfig: './tsconfig.app.json',
-      assets: ['./src/assets'],
-      optimization: false,
-      outputHashing: 'none',
-      sourceMap: true,
-      generatePackageJson: true,
-    }),
-  ],
+describe('GET /api', () => {
+  it('should return a message', async () => {
+    const res = await axios.get(`/api`);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toEqual({ message: 'Hello API' });
+  });
+});
+</file>
+
+<file path="apps/api-e2e/src/support/global-setup.ts">
+import { waitForPortOpen } from '@nx/node/utils';
+
+/* eslint-disable */
+var __TEARDOWN_MESSAGE__: string;
+
+module.exports = async function () {
+  // Start services that that the app needs to run (e.g. database, docker-compose, etc.).
+  console.log('\nSetting up...\n');
+
+  const host = process.env.HOST ?? 'localhost';
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+  await waitForPortOpen(port, { host });
+
+  // Hint: Use `globalThis` to pass variables to global teardown.
+  globalThis.__TEARDOWN_MESSAGE__ = '\nTearing down...\n';
 };
 </file>
 
-<file path="apps/web/.swcrc">
-{
-  "jsc": {
-    "target": "es2017",
-    "parser": {
-      "syntax": "typescript",
-      "decorators": true,
-      "dynamicImport": true
-    },
-    "transform": {
-      "decoratorMetadata": true,
-      "legacyDecorator": true
-    },
-    "keepClassNames": true,
-    "externalHelpers": true,
-    "loose": true
-  },
-  "module": {
-    "type": "commonjs"
-  },
-  "sourceMaps": true,
-  "exclude": [
-    "jest.config.[ct]s",
-    ".*\\.spec.tsx?$",
-    ".*\\.test.tsx?$",
-    "./src/jest-setup.ts$",
-    "./**/jest-setup.ts$",
-    ".*.js$",
-    ".*.d.ts$"
-  ]
-}
+<file path="apps/api-e2e/src/support/global-teardown.ts">
+import { killPort } from '@nx/node/utils';
+/* eslint-disable */
+
+module.exports = async function () {
+  // Put clean up logic here (e.g. stopping services, docker-compose, etc.).
+  // Hint: `globalThis` is shared between setup and teardown.
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+  await killPort(port);
+  console.log(globalThis.__TEARDOWN_MESSAGE__);
+};
 </file>
 
-<file path="apps/web/Dockerfile">
-# Giai đoạn 1: Build
-FROM docker.io/node:20-alpine AS builder
+<file path="apps/api-e2e/src/support/test-setup.ts">
+/* eslint-disable */
+import axios from 'axios';
 
-WORKDIR /app
-
-# Copy file package để cài dependency
-COPY package.json package-lock.json ./
-# Cài đặt dependency (dùng --legacy-peer-deps để tránh lỗi conflict)
-RUN npm ci --legacy-peer-deps
-
-# Copy toàn bộ source code
-COPY . .
-
-# Build dự án web
-# Lưu ý: Đảm bảo apps/web/next.config.js đã có output: 'standalone'
-RUN npx nx build web --prod
-
-# Giai đoạn 2: Runner (Chạy thật)
-FROM docker.io/node:20-alpine AS runner
-WORKDIR /app
-
-ENV NODE_ENV=production
-ENV PORT=4200
-ENV HOSTNAME="0.0.0.0"
-
-# Tạo user non-root cho bảo mật (Optional nhưng tốt)
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# --- QUAN TRỌNG: COPY ĐÚNG CẤU TRÚC ---
-
-# 1. Copy thư mục public (nếu có ảnh/icon)
-# COPY --from=builder /app/apps/web/public ./apps/web/public
-
-# 2. Copy folder .next/static vào đúng chỗ để nhận CSS/JS
-COPY --from=builder --chown=nextjs:nodejs /app/dist/apps/web/.next/static ./dist/apps/web/.next/static
-
-# 3. Copy thư mục standalone (chứa server.js và node_modules tối giản)
-COPY --from=builder --chown=nextjs:nodejs /app/dist/apps/web/.next/standalone ./
-
-# Đổi quyền user
-USER nextjs
-
-# Mở cổng
-EXPOSE 4200
-
-# --- SỬA LỖI Ở ĐÂY ---
-# Thay vì chạy "node server.js", ta phải chỉ rõ đường dẫn bên trong monorepo
-CMD ["node", "apps/web/server.js"]
+module.exports = async function () {
+  // Configure axios for tests to use.
+  const host = process.env.HOST ?? 'localhost';
+  const port = process.env.PORT ?? '3000';
+  axios.defaults.baseURL = `http://${host}:${port}`;
+};
 </file>
 
-<file path="apps/web/eslint.config.mjs">
-import nextEslintPluginNext from '@next/eslint-plugin-next';
-import nx from '@nx/eslint-plugin';
+<file path="apps/api-e2e/eslint.config.mjs">
 import baseConfig from '../../eslint.config.mjs';
 
-export default [
-  { plugins: { '@next/next': nextEslintPluginNext } },
-  ...baseConfig,
-  ...nx.configs['flat/react-typescript'],
-  {
-    ignores: ['.next/**/*'],
+export default [...baseConfig];
+</file>
+
+<file path="apps/api-e2e/jest.config.cts">
+export default {
+  displayName: 'api-e2e',
+  preset: '../../jest.preset.js',
+  globalSetup: '<rootDir>/src/support/global-setup.ts',
+  globalTeardown: '<rootDir>/src/support/global-teardown.ts',
+  setupFiles: ['<rootDir>/src/support/test-setup.ts'],
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.[tj]s$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+      },
+    ],
   },
-];
-</file>
-
-<file path="apps/web/index.d.ts">
-/* eslint-disable @typescript-eslint/no-explicit-any */
-declare module '*.svg' {
-  const content: any;
-  export const ReactComponent: any;
-  export default content;
-}
-</file>
-
-<file path="apps/web/messages/en.json">
-{
-  "HomePage": {
-    "title": "Manage your business with FlowMaster",
-    "description": "The comprehensive ERP solution for Vietnamese businesses. Inventory, HR, and Sales all in one place.",
-    "getStarted": "Get Started",
-    "login": "Login to Dashboard"
-  },
-  "LanguageSwitcher": {
-    "label": "Language",
-    "vi": "Vietnamese",
-    "en": "English"
-  }
-}
-</file>
-
-<file path="apps/web/messages/vi.json">
-{
-  "HomePage": {
-    "title": "Quản lý doanh nghiệp cùng FlowMaster",
-    "description": "Giải pháp ERP toàn diện cho doanh nghiệp Việt. Kho vận, Nhân sự và Bán hàng quy về một mối.",
-    "getStarted": "Bắt đầu ngay",
-    "login": "Đăng nhập hệ thống"
-  },
-  "LanguageSwitcher": {
-    "label": "Ngôn ngữ",
-    "vi": "Tiếng Việt",
-    "en": "Tiếng Anh"
-  }
-}
-</file>
-
-<file path="apps/web/next-env.d.ts">
-/// <reference types="next" />
-/// <reference types="next/image-types/global" />
-import "./.next/dev/types/routes.d.ts";
-
-// NOTE: This file should not be edited
-// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
-</file>
-
-<file path="apps/web/next.config.js">
-//@ts-check
-const { composePlugins, withNx } = require('@nx/next');
-const createNextIntlPlugin = require('next-intl/plugin');
-
-const path = require('path');
-const fs = require('fs');
-
-// Xử lý đường dẫn động cho file i18n
-const appRelativePath = './src/i18n.ts';
-const rootRelativePath = './apps/web/src/i18n.ts';
-const isAppRoot = fs.existsSync(path.join(process.cwd(), 'src/i18n.ts'));
-
-const withNextIntl = createNextIntlPlugin(isAppRoot ? appRelativePath : rootRelativePath);
-
-/**
- * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
- **/
-const nextConfig = {
-  reactStrictMode: true,
-  // Fix lỗi resolution của Nx trong Next.js 15+ / Turbopack
-  serverExternalPackages: [
-    'nx',
-    '@nx/key',
-    '@nx/powerpack-license',
-    '@swc/wasm',
-    '@angular-devkit/architect',
-    '@angular-devkit/core',
-    '@angular-devkit/schematics',
-    '@nx/devkit',
-    '@nx/react',
-    '@nx/next',
-  ],
-  webpack: (config) => {
-    config.resolve.alias['@nx/key'] = false;
-    config.resolve.alias['@nx/powerpack-license'] = false;
-    return config;
-  },
-  output: 'standalone',
-};
-
-module.exports = composePlugins(withNx, withNextIntl)(nextConfig);
-</file>
-
-<file path="apps/web/postcss.config.js">
-const { join } = require('path');
-
-// Note: If you use library-specific PostCSS/Tailwind configuration then you should remove the `postcssConfig` build
-// option from your application's configuration (i.e. project.json).
-//
-// See: https://nx.dev/guides/using-tailwind-css-in-react#step-4:-applying-configuration-to-libraries
-
-module.exports = {
-  plugins: {
-    tailwindcss: {
-      config: join(__dirname, 'tailwind.config.js'),
-    },
-    autoprefixer: {},
-  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/api-e2e',
 };
 </file>
 
-<file path="apps/web/project.json">
+<file path="apps/api-e2e/project.json">
 {
-  "name": "web",
+  "name": "api-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/web/src",
   "projectType": "application",
+  "implicitDependencies": ["api"],
   "targets": {
-    "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
-        "outputPath": "dist/apps/web"
+        "jestConfig": "apps/api-e2e/jest.config.cts",
+        "passWithNoTests": true
       },
-      "configurations": {
-        "development": {
-          "outputPath": "apps/web"
-        },
-        "production": {}
-      }
-    },
-    "serve": {
-      "executor": "@nx/next:server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "web:build",
-        "dev": true
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "web:build:development",
-          "dev": true
-        },
-        "production": {
-          "buildTarget": "web:build:production",
-          "dev": false
-        }
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "dependsOn": ["api:build", "api:serve"]
     }
   }
+}
+</file>
+
+<file path="apps/api-e2e/tsconfig.json">
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true
+  }
+}
+</file>
+
+<file path="apps/api-e2e/tsconfig.spec.json">
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["jest", "node"]
+  },
+  "include": ["jest.config.ts", "src/**/*.ts"]
 }
 </file>
 
@@ -2282,81 +1608,8 @@ module.exports = {
 
 </file>
 
-<file path="apps/web/src/app/[locale]/layout.tsx">
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/navigation';
-import '../../global.css';
+<file path="apps/web/src/app/api/auth/route.ts">
 
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
-  const messages = await getMessages();
-
-  return (
-    <html lang={locale}>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}
-</file>
-
-<file path="apps/web/src/app/[locale]/page.tsx">
-import { useTranslations } from 'next-intl';
-import LanguageSwitcher from '../../components/language-switcher'; // Import component đổi ngữ
-import { Button } from '@/components/ui/button'; // Import nút của Shadcn
-
-export default function HomePage() {
-  const t = useTranslations('HomePage');
-
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-slate-50">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b bg-white pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4">
-          FlowMaster ERP &nbsp;
-          <code className="font-mono font-bold">v1.0</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white lg:static lg:h-auto lg:w-auto lg:bg-none">
-
-          <LanguageSwitcher />
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center flex-col gap-6 text-center mt-20">
-        <h1 className="text-5xl font-extrabold tracking-tight lg:text-6xl text-slate-900">
-          {t('title')}
-        </h1>
-        <p className="max-w-[600px] text-lg text-slate-600">
-          {t('description')}
-        </p>
-        
-        <div className="flex gap-4 mt-4">
-          <Button size="lg" className="bg-info hover:bg-info/90">
-            {t('getStarted')}
-          </Button>
-          <Button size="lg" variant="outline">
-            {t('login')}
-          </Button>
-        </div>
-      </div>
-    </main>
-  );
-}
 </file>
 
 <file path="apps/web/src/app/api/hello/route.ts">
@@ -2365,52 +1618,15 @@ export async function GET(request: Request) {
 }
 </file>
 
-<file path="apps/web/src/components/example-usage.tsx">
+<file path="apps/web/src/components/Provider/StoreProvider.tsx">
 'use client';
+import { useRef } from 'react';
+import { Provider } from 'react-redux';
+import { store } from '@/store';
 
-import { useAppColor } from '@/hooks';
-
-export default function ExampleUsage() {
-  const appColors = useAppColor();
-
-  return (
-    <div style={{ backgroundColor: appColors.white, padding: '20px' }}>
-      <h1 style={{ color: appColors.primary.DEFAULT }}>Example Component</h1>
-      <button style={{ backgroundColor: appColors.brand.DEFAULT, color: appColors.white }}>
-        Click me
-      </button>
-      <div style={{ backgroundColor: appColors.success, padding: '10px', marginTop: '10px' }}>
-        Success message
-      </div>
-    </div>
-  );
-}
-</file>
-
-<file path="apps/web/src/components/language-switcher.tsx">
-'use client';
-
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/navigation';
-import { Button } from '@/components/ui/button';
-
-export default function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const toggleLanguage = () => {
-    const nextLocale = locale === 'vi' ? 'en' : 'vi';
-    // Set cookie for next-intl middleware
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
-    router.refresh();
-  };
-
-  return (
-    <Button variant="outline" onClick={toggleLanguage}>
-      {locale === 'vi' ? '🇺🇸 English' : '🇻🇳 Tiếng Việt'}
-    </Button>
-  );
+export function StoreProvider({ children }: { children: React.ReactNode }) {
+  const storeRef = useRef(store);
+  return <Provider store={storeRef.current}>{children}</Provider>;
 }
 </file>
 
@@ -2473,6 +1689,90 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 </file>
 
+<file path="apps/web/src/components/ui/notification.tsx">
+'use client';
+
+import { useEffect } from 'react';
+import { X } from 'lucide-react';
+
+interface NotificationProps {
+  message: string;
+  type: 'success' | 'error';
+  onClose: () => void;
+}
+
+export function Notification({ message, type, onClose }: NotificationProps) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000); // Auto-close after 5 seconds
+
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+  const textColor = 'text-white';
+
+  return (
+    <div className={`fixed top-5 right-5 p-4 rounded-md shadow-lg ${bgColor} ${textColor} flex items-center z-50`}>
+      <p className="mr-4">{message}</p>
+      <button onClick={onClose} className="text-white">
+        <X size={20} />
+      </button>
+    </div>
+  );
+}
+</file>
+
+<file path="apps/web/src/components/example-usage.tsx">
+'use client';
+
+import { useAppColor } from '@/hooks';
+
+export default function ExampleUsage() {
+  const appColors = useAppColor();
+
+  return (
+    <div style={{ backgroundColor: appColors.white, padding: '20px' }}>
+      <h1 style={{ color: appColors.primary.DEFAULT }}>Example Component</h1>
+      <button style={{ backgroundColor: appColors.brand.DEFAULT, color: appColors.white }}>
+        Click me
+      </button>
+      <div style={{ backgroundColor: appColors.success, padding: '10px', marginTop: '10px' }}>
+        Success message
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="apps/web/src/components/language-switcher.tsx">
+'use client';
+
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from '@/navigation';
+import { Button } from '@/components/ui/button';
+
+export default function LanguageSwitcher() {
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const toggleLanguage = () => {
+    const nextLocale = locale === 'vi' ? 'en' : 'vi';
+    // Set cookie for next-intl middleware
+    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    router.refresh();
+  };
+
+  return (
+    <Button variant="outline" onClick={toggleLanguage}>
+      {locale === 'vi' ? '🇺🇸 English' : '🇻🇳 Tiếng Việt'}
+    </Button>
+  );
+}
+</file>
+
 <file path="apps/web/src/config/colors.js">
 module.exports = {
   appColors: {
@@ -2533,63 +1833,159 @@ module.exports = {
 };
 </file>
 
-<file path="apps/web/src/config/colors.ts">
-export const appColors = {
-  // 1. Màu hệ thống (Bắt buộc phải có)
-  transparent: "transparent",
-  current: "currentColor",
-  white: "#FFFFFF",
-  black: "#000000",
+<file path="apps/web/src/hooks/index.ts">
+export { useAppColor } from "./useAppColor";
+</file>
 
-  // 2. Màu thương hiệu của FlowMaster
-  brand: {
-    DEFAULT: "#0F172A",
-    light: "#334155",
-    dark: "#020617",
-  },
+<file path="apps/web/src/hooks/useAppColor.ts">
+import { appColors } from "@/config/colors";
 
-  // 3. Màu trạng thái
-  success: "#22C55E",
-  warning: "#F59E0B",
-  error:   "#EF4444",
-  info:    "#3B82F6",
+export const useAppColor = () => appColors;
+</file>
 
-  // 4. Các biến màu của Shadcn UI (Bắt buộc giữ để UI không vỡ)
-  // Chúng ta map nó vào biến CSS Variable gốc
-  border: "hsl(var(--border))",
-  input: "hsl(var(--input))",
-  ring: "hsl(var(--ring))",
-  background: "hsl(var(--background))",
-  foreground: "hsl(var(--foreground))",
-  primary: {
-    DEFAULT: "hsl(var(--primary))",
-    foreground: "hsl(var(--primary-foreground))",
+<file path="apps/web/src/lib/dto/auth.dto.ts">
+export interface LoginRequest {
+  code: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  access_token: string;
+  refresh_token?: string;
+}
+</file>
+
+<file path="apps/web/src/lib/api-client.ts">
+'use client';
+
+import axios from 'axios';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const apiClient = axios.create({
+  baseURL: API_URL,
+  timeout: 30000,
+  headers: {
+    'Content-Type': 'application/json',
   },
-  secondary: {
-    DEFAULT: "hsl(var(--secondary))",
-    foreground: "hsl(var(--secondary-foreground))",
-  },
-  destructive: {
-    DEFAULT: "hsl(var(--destructive))",
-    foreground: "hsl(var(--destructive-foreground))",
-  },
-  muted: {
-    DEFAULT: "hsl(var(--muted))",
-    foreground: "hsl(var(--muted-foreground))",
-  },
-  accent: {
-    DEFAULT: "hsl(var(--accent))",
-    foreground: "hsl(var(--accent-foreground))",
-  },
-  popover: {
-    DEFAULT: "hsl(var(--popover))",
-    foreground: "hsl(var(--popover-foreground))",
-  },
-  card: {
-    DEFAULT: "hsl(var(--card))",
-    foreground: "hsl(var(--card-foreground))",
-  },
-} as const;
+  withCredentials: true,
+});
+
+apiClient.interceptors.request.use((config) => {
+  const token = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('access_token='))
+    ?.split('=')[1];
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+apiClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const { data } = await axios.post(
+          `${API_URL}/auth/refresh`,
+          {},
+          { withCredentials: true }
+        );
+
+        document.cookie = `access_token=${data.access_token}; path=/; max-age=86400`;
+
+        originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
+        return apiClient(originalRequest);
+      } catch {
+        document.cookie = 'access_token=; path=/; max-age=0';
+        document.cookie = 'refresh_token=; path=/; max-age=0';
+        window.location.href = '/login';
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+</file>
+
+<file path="apps/web/src/lib/utils.ts">
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+</file>
+
+<file path="apps/web/src/services/auth.service.ts">
+import { apiClient } from '@/lib/api-client';
+import { LoginRequest, LoginResponse } from '@/lib/dto/auth.dto';
+
+const login = async ({ code, password }: LoginRequest): Promise<LoginResponse> => {
+  const response = await apiClient.post<LoginResponse>('/auth/login', { code, password });
+  return response.data;
+};
+
+export const authService = {
+  login,
+};
+</file>
+
+<file path="apps/web/src/store/hooks.ts">
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
+import type { RootState, AppDispatch } from './index';
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+</file>
+
+<file path="apps/web/src/store/index.ts">
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { rootReducer } from './rootReducer';
+import { rootSaga } from './rootSaga';
+
+const sagaMiddleware = createSagaMiddleware();
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+});
+
+sagaMiddleware.run(rootSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+</file>
+
+<file path="apps/web/src/store/rootReducer.ts">
+import { combineReducers } from '@reduxjs/toolkit';
+import userReducer from './slices/user.slice';
+
+export const rootReducer = combineReducers({
+  user: userReducer,
+});
+
+
+export type RootState = ReturnType<typeof rootReducer>;
+</file>
+
+<file path="apps/web/src/store/rootSaga.ts">
+import {all} from 'redux-saga/effects';
+
+export function* rootSaga() {
+  yield all([
+    // Add your sagas here
+  ]);
+}
 </file>
 
 <file path="apps/web/src/global.css">
@@ -3100,16 +2496,6 @@ summary svg {
 }
 </file>
 
-<file path="apps/web/src/hooks/index.ts">
-export { useAppColor } from "./useAppColor";
-</file>
-
-<file path="apps/web/src/hooks/useAppColor.ts">
-import { appColors } from "@/config/colors";
-
-export const useAppColor = () => appColors;
-</file>
-
 <file path="apps/web/src/i18n.ts">
 import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
@@ -3126,75 +2512,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: (await import(`../messages/${locale}.json`)).default,
   };
 });
-</file>
-
-<file path="apps/web/src/lib/api-client.ts">
-'use client';
-
-import axios from 'axios';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-export const apiClient = axios.create({
-  baseURL: API_URL,
-  timeout: 30000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  withCredentials: true,
-});
-
-apiClient.interceptors.request.use((config) => {
-  const token = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('access_token='))
-    ?.split('=')[1];
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
-  return config;
-});
-
-apiClient.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      try {
-        const { data } = await axios.post(
-          `${API_URL}/auth/refresh`,
-          {},
-          { withCredentials: true }
-        );
-
-        document.cookie = `access_token=${data.access_token}; path=/; max-age=86400`;
-
-        originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
-        return apiClient(originalRequest);
-      } catch {
-        document.cookie = 'access_token=; path=/; max-age=0';
-        document.cookie = 'refresh_token=; path=/; max-age=0';
-        window.location.href = '/login';
-      }
-    }
-
-    return Promise.reject(error);
-  }
-);
-</file>
-
-<file path="apps/web/src/lib/utils.ts">
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
 </file>
 
 <file path="apps/web/src/middleware.ts">
@@ -3220,6 +2537,180 @@ export const routing = defineRouting({
 
 export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
+</file>
+
+<file path="apps/web/.swcrc">
+{
+  "jsc": {
+    "target": "es2017",
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true
+    },
+    "keepClassNames": true,
+    "externalHelpers": true,
+    "loose": true
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "sourceMaps": true,
+  "exclude": [
+    "jest.config.[ct]s",
+    ".*\\.spec.tsx?$",
+    ".*\\.test.tsx?$",
+    "./src/jest-setup.ts$",
+    "./**/jest-setup.ts$",
+    ".*.js$",
+    ".*.d.ts$"
+  ]
+}
+</file>
+
+<file path="apps/web/Dockerfile">
+# Giai đoạn 1: Build
+FROM docker.io/node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy file package để cài dependency
+COPY package.json package-lock.json ./
+# Cài đặt dependency (dùng --legacy-peer-deps để tránh lỗi conflict)
+RUN npm ci --legacy-peer-deps
+
+# Copy toàn bộ source code
+COPY . .
+
+# Build dự án web
+# Lưu ý: Đảm bảo apps/web/next.config.js đã có output: 'standalone'
+RUN npx nx build web --prod
+
+# Giai đoạn 2: Runner (Chạy thật)
+FROM docker.io/node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=4200
+ENV HOSTNAME="0.0.0.0"
+
+# Tạo user non-root cho bảo mật (Optional nhưng tốt)
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# --- QUAN TRỌNG: COPY ĐÚNG CẤU TRÚC ---
+
+# 1. Copy thư mục public (nếu có ảnh/icon)
+# COPY --from=builder /app/apps/web/public ./apps/web/public
+
+# 2. Copy folder .next/static vào đúng chỗ để nhận CSS/JS
+COPY --from=builder --chown=nextjs:nodejs /app/dist/apps/web/.next/static ./dist/apps/web/.next/static
+
+# 3. Copy thư mục standalone (chứa server.js và node_modules tối giản)
+COPY --from=builder --chown=nextjs:nodejs /app/dist/apps/web/.next/standalone ./
+
+# Đổi quyền user
+USER nextjs
+
+# Mở cổng
+EXPOSE 4200
+
+# --- SỬA LỖI Ở ĐÂY ---
+# Thay vì chạy "node server.js", ta phải chỉ rõ đường dẫn bên trong monorepo
+CMD ["node", "apps/web/server.js"]
+</file>
+
+<file path="apps/web/eslint.config.mjs">
+import nextEslintPluginNext from '@next/eslint-plugin-next';
+import nx from '@nx/eslint-plugin';
+import baseConfig from '../../eslint.config.mjs';
+
+export default [
+  { plugins: { '@next/next': nextEslintPluginNext } },
+  ...baseConfig,
+  ...nx.configs['flat/react-typescript'],
+  {
+    ignores: ['.next/**/*'],
+  },
+];
+</file>
+
+<file path="apps/web/next-env.d.ts">
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+</file>
+
+<file path="apps/web/postcss.config.js">
+const { join } = require('path');
+
+// Note: If you use library-specific PostCSS/Tailwind configuration then you should remove the `postcssConfig` build
+// option from your application's configuration (i.e. project.json).
+//
+// See: https://nx.dev/guides/using-tailwind-css-in-react#step-4:-applying-configuration-to-libraries
+
+module.exports = {
+  plugins: {
+    tailwindcss: {
+      config: join(__dirname, 'tailwind.config.js'),
+    },
+    autoprefixer: {},
+  },
+};
+</file>
+
+<file path="apps/web/project.json">
+{
+  "name": "web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/web/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/web"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/web"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "web:build:production",
+          "dev": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}
 </file>
 
 <file path="apps/web/tailwind.config.js">
@@ -3344,8 +2835,7 @@ module.exports = {
     "../../apps/web/.next/types/**/*.ts",
     "../../dist/apps/web/.next/types/**/*.ts",
 
-    "next-env.d.ts",
-    "../../libs/shared-types/src/index.ts"
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules",
@@ -3355,144 +2845,6 @@ module.exports = {
     "**/*.test.ts"
   ]
 }
-</file>
-
-<file path="eslint.config.mjs">
-import nx from '@nx/eslint-plugin';
-
-export default [
-  ...nx.configs['flat/base'],
-  ...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
-  {
-    ignores: ['**/dist', '**/out-tsc'],
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    rules: {
-      '@nx/enforce-module-boundaries': [
-        'error',
-        {
-          enforceBuildableLibDependency: true,
-          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
-          depConstraints: [
-            {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.cts',
-      '**/*.mts',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
-    // Override or add rules here
-    rules: {},
-  },
-];
-</file>
-
-<file path="jest.config.ts">
-import type { Config } from 'jest';
-import { getJestProjectsAsync } from '@nx/jest';
-
-export default async (): Promise<Config> => ({
-  projects: await getJestProjectsAsync(),
-});
-</file>
-
-<file path="jest.preset.js">
-const nxPreset = require('@nx/jest/preset').default;
-
-module.exports = { ...nxPreset };
-</file>
-
-<file path="libs/shared-types/eslint.config.mjs">
-import baseConfig from '../../eslint.config.mjs';
-
-export default [
-  ...baseConfig,
-  {
-    files: ['**/*.json'],
-    rules: {
-      '@nx/dependency-checks': [
-        'error',
-        {
-          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
-        },
-      ],
-    },
-    languageOptions: {
-      parser: await import('jsonc-eslint-parser'),
-    },
-  },
-];
-</file>
-
-<file path="libs/shared-types/package.json">
-{
-  "name": "@flowmaster/shared-types",
-  "version": "0.0.1",
-  "private": true,
-  "type": "commonjs",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
-  "dependencies": {
-    "tslib": "^2.3.0"
-  }
-}
-</file>
-
-<file path="libs/shared-types/project.json">
-{
-  "name": "shared-types",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared-types/src",
-  "projectType": "library",
-  "tags": [],
-  "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/shared-types",
-        "main": "libs/shared-types/src/index.ts",
-        "tsConfig": "libs/shared-types/tsconfig.lib.json",
-        "assets": ["libs/shared-types/*.md"]
-      }
-    }
-  }
-}
-</file>
-
-<file path="libs/shared-types/README.md">
-# shared-types
-
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build shared-types` to build the library.
-</file>
-
-<file path="libs/shared-types/src/index.ts">
-export * from './lib/shared-types';
-export * from './lib/hrm.types';
-export * from './lib/sales.types';
-export * from './lib/purchasing.types';
-export * from './lib/inventory.types';
-export * from './lib/finance.types';
-export * from './lib/auth.types';
 </file>
 
 <file path="libs/shared-types/src/lib/auth.types.ts">
@@ -3860,6 +3212,84 @@ export function sharedTypes(): string {
 }
 </file>
 
+<file path="libs/shared-types/src/index.ts">
+export * from './lib/shared-types';
+export * from './lib/hrm.types';
+export * from './lib/sales.types';
+export * from './lib/purchasing.types';
+export * from './lib/inventory.types';
+export * from './lib/finance.types';
+export * from './lib/auth.types';
+</file>
+
+<file path="libs/shared-types/eslint.config.mjs">
+import baseConfig from '../../eslint.config.mjs';
+
+export default [
+  ...baseConfig,
+  {
+    files: ['**/*.json'],
+    rules: {
+      '@nx/dependency-checks': [
+        'error',
+        {
+          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
+        },
+      ],
+    },
+    languageOptions: {
+      parser: await import('jsonc-eslint-parser'),
+    },
+  },
+];
+</file>
+
+<file path="libs/shared-types/package.json">
+{
+  "name": "@flowmaster/shared-types",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
+</file>
+
+<file path="libs/shared-types/project.json">
+{
+  "name": "shared-types",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared-types/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared-types",
+        "main": "libs/shared-types/src/index.ts",
+        "tsConfig": "libs/shared-types/tsconfig.lib.json",
+        "assets": ["libs/shared-types/*.md"]
+      }
+    }
+  }
+}
+</file>
+
+<file path="libs/shared-types/README.md">
+# shared-types
+
+This library was generated with [Nx](https://nx.dev).
+
+## Building
+
+Run `nx build shared-types` to build the library.
+</file>
+
 <file path="libs/shared-types/tsconfig.json">
 {
   "extends": "../../tsconfig.base.json",
@@ -3893,6 +3323,1148 @@ export function sharedTypes(): string {
   },
   "include": ["src/**/*.ts"]
 }
+</file>
+
+<file path=".editorconfig">
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path=".prettierignore">
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data
+</file>
+
+<file path=".prettierrc">
+{
+  "singleQuote": true
+}
+</file>
+
+<file path="eslint.config.mjs">
+import nx from '@nx/eslint-plugin';
+
+export default [
+  ...nx.configs['flat/base'],
+  ...nx.configs['flat/typescript'],
+  ...nx.configs['flat/javascript'],
+  {
+    ignores: ['**/dist', '**/out-tsc'],
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    rules: {
+      '@nx/enforce-module-boundaries': [
+        'error',
+        {
+          enforceBuildableLibDependency: true,
+          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
+          depConstraints: [
+            {
+              sourceTag: '*',
+              onlyDependOnLibsWithTags: ['*'],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: [
+      '**/*.ts',
+      '**/*.tsx',
+      '**/*.cts',
+      '**/*.mts',
+      '**/*.js',
+      '**/*.jsx',
+      '**/*.cjs',
+      '**/*.mjs',
+    ],
+    // Override or add rules here
+    rules: {},
+  },
+];
+</file>
+
+<file path="jest.config.ts">
+import type { Config } from 'jest';
+import { getJestProjectsAsync } from '@nx/jest';
+
+export default async (): Promise<Config> => ({
+  projects: await getJestProjectsAsync(),
+});
+</file>
+
+<file path="jest.preset.js">
+const nxPreset = require('@nx/jest/preset').default;
+
+module.exports = { ...nxPreset };
+</file>
+
+<file path="README.md">
+# FlowmasterErp
+
+<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+
+✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+
+[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+
+## Finish your remote caching setup
+
+[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/fFZj7jvFkc)
+
+
+## Run tasks
+
+To run tasks with Nx use:
+
+```sh
+npx nx <target> <project-name>
+```
+
+For example:
+
+```sh
+npx nx build myproject
+```
+
+These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+
+[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Add new projects
+
+While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+
+To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
+```sh
+npx nx add @nx/react
+```
+
+Use the plugin's generator to create new projects. For example, to create a new React app or library:
+
+```sh
+# Generate an app
+npx nx g @nx/react:app demo
+
+# Generate a library
+npx nx g @nx/react:lib some-lib
+```
+
+You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+
+[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+
+[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Install Nx Console
+
+Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+
+[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Useful links
+
+Learn more:
+
+- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+And join the Nx community:
+- [Discord](https://go.nx.dev/community)
+- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
+- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
+- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+</file>
+
+<file path=".github/workflows/ci.yml">
+
+</file>
+
+<file path="apps/api/src/app/modules/auth/dto/login.dto.ts">
+import { IsNotEmpty, MinLength } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+
+export class LoginDto {
+  @ApiProperty({ example: 'USER123', description: 'The code of the user' })
+  @IsNotEmpty()
+  code: string;
+
+  @ApiProperty({ example: 'password123', description: 'The password of the user', minLength: 6 })
+  @IsNotEmpty()
+  @MinLength(6)
+  password: string;
+}
+</file>
+
+<file path="apps/api/src/app/modules/auth/strategies/jwt.strategy.ts">
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { PassportStrategy } from '@nestjs/passport';
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
+  constructor(private configService: ConfigService) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: configService.get<string>('JWT_SECRET') || 'secretKey',
+    });
+  }
+
+  async validate(payload: any) {
+    return { userId: payload.sub, code: payload.code, role: payload.role };
+  }
+}
+</file>
+
+<file path="apps/api/src/app/modules/auth/auth.controller.ts">
+import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { LoginDto } from './dto/login.dto';
+
+@ApiTags('Auth')
+@Controller('auth')
+export class AuthController {
+  constructor(private authService: AuthService) {}
+
+
+  @ApiOperation({ summary: 'User login' })
+  @ApiResponse({ status: 200, description: 'Return access token and user info.' })
+  @ApiResponse({ status: 401, description: 'Invalid credentials.' })
+  @HttpCode(HttpStatus.OK)
+  @Post('login')
+  async login(@Body() loginDto: LoginDto) {
+    return this.authService.login(loginDto);
+  }
+
+  @UseGuards(JwtRefreshGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('refresh')
+  @ApiOperation({ summary: 'Refresh access token' })
+  @ApiResponse({ status: 200, description: 'Return new tokens.' })
+  @ApiResponse({ status: 401, description: 'Invalid refresh token.' })
+  @ApiBearerAuth()
+  refresh(@Req() req) {
+    const userId = req.user['sub'];
+    const refreshToken = req.user['refreshToken'];
+    return this.authService.refreshTokens(userId, refreshToken);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('logout')
+  @ApiOperation({ summary: 'Logout user' })
+  @ApiResponse({ status: 200, description: 'User logged out.' })
+  @ApiBearerAuth()
+  async logout(@Req() req) {
+    const userId = req.user['userId'] || req.user['sub'];
+    return this.authService.logout(userId);
+  }
+}
+</file>
+
+<file path="apps/api/src/app/modules/auth/auth.service.ts">
+import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
+import { User } from '../../modules/hrm/entities/user.entity';
+import { LoginDto } from './dto/login.dto';
+
+@Injectable()
+export class AuthService {
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+    private jwtService: JwtService
+  ) {}
+  async login(loginDto: LoginDto) {
+    const { code, password } = loginDto;
+
+    const adminCode = process.env.ADMIN_CODE || 'admin';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin';
+
+    if (code === adminCode && password === adminPassword) {
+      const tokens = await this.getTokens('admin-id', adminCode, 'admin');
+      return {
+        access_token: tokens.access_token,
+        refresh_token: tokens.refresh_token,
+        user: {
+          id: 'admin-id',
+          code: code,
+          full_name: 'Administrator',
+          role: { name: 'admin' },
+          avatar_url: null,
+          employee: null
+        }
+      };
+    }
+
+    const user = await this.userRepository.findOne({ 
+      where: { code },
+      relations: ['role', 'employee', 'employee.department'] 
+    });
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+    if (!isMatch) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
+    await this.updateRefreshToken(user.id, tokens.refresh_token);
+    user.last_login_at = new Date();
+    await this.userRepository.update(user.id, { last_login_at: new Date() });
+    
+    return {
+      access_token: tokens.access_token,
+      refresh_token: tokens.refresh_token,
+      user: {
+        id: user.id,
+        code: user.code,
+        full_name: user.full_name,
+        role: user.role,
+        avatar_url: user.avatar_url,
+        employee: user.employee
+      }
+    };
+  }
+
+  async logout(userId: string) {
+    await this.userRepository.update(userId, { refresh_token: null });
+  }
+  async refreshTokens(userId: string, refreshToken: string) {
+    const user = await this.userRepository.findOne({ where: { id: userId }, relations: ['role'] });
+    if (!user || !user.refresh_token) {
+      throw new UnauthorizedException('Access Denied');
+    }
+
+    const refreshTokenMatches = await bcrypt.compare(refreshToken, user.refresh_token);
+    if (!refreshTokenMatches) {
+      throw new UnauthorizedException('Access Denied');
+    }
+
+    const tokens = await this.getTokens(user.id, user.code, user.role ? user.role.name : null);
+    await this.updateRefreshToken(user.id, tokens.refresh_token);
+    return tokens;
+  }
+
+  private async updateRefreshToken(userId: string, refreshToken: string) {
+    const hash = await bcrypt.hash(refreshToken, 10);
+    await this.userRepository.update(userId, { refresh_token: hash });
+  }
+
+  private async getTokens(userId: string, code: string, role: string) {
+    const payload = { 
+      sub: userId, 
+      code: code, 
+      role: role 
+    };
+    const [at, rt] = await Promise.all([
+      this.jwtService.signAsync(payload, {
+        expiresIn: '15m',
+        secret: process.env.JWT_SECRET || 'secretKey',
+      }),
+      this.jwtService.signAsync(payload, {
+        expiresIn: '7d',
+        secret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'secretKey',
+      }),
+    ]);
+    return {
+      access_token: at,
+      refresh_token: rt,
+    };
+  }
+}
+</file>
+
+<file path="apps/api/src/app/modules/hrm/entities/employee.entity.ts">
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany } from 'typeorm';
+import { Department } from './department.entity';
+import { User } from './user.entity'
+import { Attendance } from './attendance.entity';
+
+export enum Gender {
+  MALE = 'Male',
+  FEMALE = 'Female',
+}
+
+@Entity('employees')
+export class Employee {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ type: 'uuid', nullable: true })
+  user_id: string;
+
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @Column({ type: 'int', nullable: true })
+  department_id: number;
+
+  @ManyToOne(() => Department, (dept) => dept.employees)
+  @JoinColumn({ name: 'department_id' })
+  department: Department;
+
+  @Column({ length: 20, unique: true })
+  code: string;
+
+  @Column({ type: 'date', nullable: true })
+  dob: Date;
+
+  @Column({ type: 'enum', enum: Gender, nullable: true })
+  gender: Gender;
+
+  @Column({ type: 'text', nullable: true })
+  address: string;
+
+  @Column({ type: 'date', nullable: true })
+  hire_date: Date;
+
+  @Column({ length: 50, nullable: true })
+  bank_account: string;
+
+  @Column({ length: 100, nullable: true })
+  bank_name: string;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  base_salary: number;
+
+  @OneToMany(() => Attendance, (attendance) => attendance.employee)
+  attendances: Attendance[];
+}
+</file>
+
+<file path="apps/api/src/app/modules/hrm/entities/user.entity.ts">
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
+import { Role } from './role.entity';
+import { Employee } from './employee.entity';
+
+@Entity('users')
+export class User {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ length: 100, unique: true })
+  code: string;
+
+
+  @Column({ length: 255 })
+  password_hash: string;
+
+  @Column({ length: 100 })
+  full_name: string;
+
+  @Column({ length: 255, nullable: true })
+  avatar_url: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  last_login_at: Date;
+
+  @Column({ length: 500, nullable: true })
+  refresh_token: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @ManyToOne(() => Role)
+  @JoinColumn({ name: 'role_id' }) // Assuming single role for now for simplicity unless specified
+  role: Role;
+
+  @OneToOne(() => Employee, (employee) => employee.user)
+  employee: Employee;
+}
+</file>
+
+<file path="apps/api/src/app/modules/hrm/hrm.module.ts">
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Department } from './entities/department.entity';
+import { Employee } from './entities/employee.entity';
+import { User } from './entities/user.entity';
+import { Role } from './entities/role.entity';
+import { Attendance } from './entities/attendance.entity';
+import { EmployeeService } from './employee.service';
+import { EmployeeController } from './employee.controller';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      Department,
+      Employee,
+      User,
+      Role,
+      Attendance
+    ]),
+  ],
+  controllers: [EmployeeController],
+  providers: [EmployeeService],
+  exports: [TypeOrmModule]
+})
+export class HrmModule {}
+</file>
+
+<file path="apps/api/src/app/modules/sales/entities/order.entity.ts">
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, CreateDateColumn } from 'typeorm';
+import { Customer } from './customer.entity';
+import { OrderItem } from './order-item.entity'
+import { Employee } from '../../hrm/entities/employee.entity';
+
+export enum PaymentMethod {
+  CASH = 'Cash',
+  BANK = 'Bank',
+  COD = 'COD',
+}
+
+export enum PaymentStatus {
+  UNPAID = 'Unpaid',
+  PARTIAL = 'Partial',
+  PAID = 'Paid',
+}
+
+export enum OrderStatus {
+  PENDING = 'Pending',
+  SHIPPING = 'Shipping',
+  COMPLETED = 'Completed',
+  CANCELLED = 'Cancelled',
+}
+
+@Entity('orders')
+export class Order {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ length: 20, unique: true })
+  code: string;
+
+  @Column({ type: 'uuid' })
+  customer_id: string;
+
+  @ManyToOne(() => Customer, (customer) => customer.orders)
+  @JoinColumn({ name: 'customer_id' })
+  customer: Customer;
+
+  @Column({ type: 'uuid', nullable: true })
+  sales_staff_id: string;
+
+  @ManyToOne(() => Employee)
+  @JoinColumn({ name: 'sales_staff_id' })
+  sales_staff: Employee;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  sub_total: number;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  discount_amount: number;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  tax_amount: number;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  shipping_fee: number;
+
+  @Column({ type: 'decimal', precision: 15, scale: 2, default: 0 })
+  total_amount: number;
+
+  @Column({ type: 'enum', enum: PaymentMethod, nullable: true })
+  payment_method: PaymentMethod;
+
+  @Column({ type: 'enum', enum: PaymentStatus, default: PaymentStatus.UNPAID })
+  payment_status: PaymentStatus;
+
+  @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.PENDING })
+  order_status: OrderStatus;
+
+  @Column({ type: 'text', nullable: true })
+  shipping_address: string;
+
+  @Column({ type: 'text', nullable: true })
+  note: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @OneToMany(() => OrderItem, (item) => item.order)
+  items: OrderItem[];
+}
+</file>
+
+<file path="apps/api/webpack.config.js">
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
+const { join } = require('path');
+
+module.exports = {
+  output: {
+    path: join(__dirname, '../../dist/apps/api'),
+    clean: true,
+    ...(process.env.NODE_ENV !== 'production' && {
+      devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+    }),
+  },
+  plugins: [
+    new NxAppWebpackPlugin({
+      target: 'node',
+      compiler: 'tsc',
+      main: './src/main.ts',
+      tsConfig: './tsconfig.app.json',
+      assets: ['./src/assets'],
+      optimization: false,
+      outputHashing: 'none',
+      sourceMap: true,
+      generatePackageJson: true,
+    }),
+  ],
+};
+</file>
+
+<file path="apps/web/messages/en.json">
+{
+  "HomePage": {
+    "title": "Manage your business with FlowMaster",
+    "description": "The comprehensive ERP solution for Vietnamese businesses. Inventory, HR, and Sales all in one place.",
+    "getStarted": "Get Started",
+    "login": "Login to Dashboard"
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "vi": "Vietnamese",
+    "en": "English"
+  },
+  "LoginPage": {
+    "title": "Welcome Back",
+    "description": "Please login with your Code and Password",
+    "codeLabel": "Code",
+    "passwordLabel": "Password",
+    "codePlaceholder": "e.g. admin",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "Sign In",
+    "loginSuccess": "Login successful!",
+    "loginFailed": "Login failed. Please check your Code and password."
+  }
+}
+</file>
+
+<file path="apps/web/messages/vi.json">
+{
+  "HomePage": {
+    "title": "Quản lý doanh nghiệp cùng FlowMaster",
+    "description": "Giải pháp ERP toàn diện cho doanh nghiệp Việt. Kho vận, Nhân sự và Bán hàng quy về một mối.",
+    "getStarted": "Bắt đầu ngay",
+    "login": "Đăng nhập hệ thống"
+  },
+  "LanguageSwitcher": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "Tiếng Anh"
+  },
+  "LoginPage": {
+    "title": "Chào mừng trở lại",
+    "description": "Vui lòng đăng nhập bằng Mã và Mật khẩu của bạn",
+    "codeLabel": "Mã",
+    "passwordLabel": "Mật khẩu",
+    "codePlaceholder": "ví dụ: admin",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "Đăng nhập",
+    "loginSuccess": "Đăng nhập thành công!",
+    "loginFailed": "Đăng nhập thất bại. Vui lòng kiểm tra lại Mã và Mật khẩu."
+  }
+}
+</file>
+
+<file path="apps/web/src/app/[locale]/login/page.tsx">
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Notification } from '@/components/ui/notification';
+import { useTranslations } from 'next-intl';
+import { authService } from '@/services/auth.service';
+import Cookies from 'js-cookie';
+
+export default function LoginPage() {
+  const [code, setCode] = useState('');
+  const [password, setPassword] = useState('');
+  const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const router = useRouter();
+  const t = useTranslations('LoginPage');
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNotification(null);
+
+    try {
+      const { access_token, refresh_token } = await authService.login({ code, password });
+      Cookies.set('access_token', access_token, { expires: 1, path: '/' });
+      if (refresh_token) {
+        Cookies.set('refresh_token', refresh_token, { expires: 7, path: '/' });
+      }
+      
+      setNotification({ message: t('loginSuccess'), type: 'success' });
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
+    } catch (err: any) {
+      const errorMessage = err.response?.data?.message || t('loginFailed');
+      setNotification({ message: errorMessage, type: 'error' });
+    }
+  };
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-slate-50">
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
+      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-slate-900">{t('title')}</h1>
+          <p className="text-slate-600 mt-2">{t('description')}</p>
+        </div>
+
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">{t('codeLabel')}</label>
+            <input
+              type="text"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              placeholder={t('codePlaceholder')}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">{t('passwordLabel')}</label>
+            <input
+              type="password"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={t('passwordPlaceholder')}
+              required
+            />
+          </div>
+          <Button type="submit" className="w-full mt-6" size="lg">
+            {t('signInButton')}
+          </Button>
+        </form>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="apps/web/src/app/[locale]/layout.tsx">
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/navigation';
+import { StoreProvider } from '@/components/Provider/StoreProvider';
+import '../../global.css';
+export default async function LocaleLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <StoreProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </StoreProvider>
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="apps/web/src/app/[locale]/page.tsx">
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from '../../components/language-switcher'; // Import component đổi ngữ
+import { Button } from '@/components/ui/button'; // Import nút của Shadcn
+import { Link } from '@/navigation';
+
+export default function HomePage() {
+  const t = useTranslations('HomePage');
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-slate-50">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <p className="fixed left-0 top-0 flex w-full justify-center border-b bg-white pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4">
+          FlowMaster ERP &nbsp;
+          <code className="font-mono font-bold">v1.0</code>
+        </p>
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white lg:static lg:h-auto lg:w-auto lg:bg-none">
+
+          <LanguageSwitcher />
+        </div>
+      </div>
+
+      <div className="relative flex place-items-center flex-col gap-6 text-center mt-20">
+        <h1 className="text-5xl font-extrabold tracking-tight lg:text-6xl text-slate-900">
+          {t('title')}
+        </h1>
+        <p className="max-w-[600px] text-lg text-slate-600">
+          {t('description')}
+        </p>
+        
+        <div className="flex gap-4 mt-4">
+          <Button size="lg" className="bg-info hover:bg-info/90">
+            {t('getStarted')}
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/login">{t('login')}</Link>
+          </Button>
+        </div>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="apps/web/index.d.ts">
+/* eslint-disable @typescript-eslint/no-explicit-any */
+declare module '*.svg' {
+  const content: any;
+  export const ReactComponent: any;
+  export default content;
+}
+
+declare module '*.css' {
+  const content: Record<string, string>;
+  export default content;
+}
+</file>
+
+<file path="apps/web/next.config.js">
+//@ts-check
+const { composePlugins, withNx } = require('@nx/next');
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const path = require('path');
+const fs = require('fs');
+
+// Xử lý đường dẫn động cho file i18n
+const appRelativePath = './src/i18n.ts';
+const rootRelativePath = './apps/web/src/i18n.ts';
+const isAppRoot = fs.existsSync(path.join(process.cwd(), 'src/i18n.ts'));
+
+const withNextIntl = createNextIntlPlugin(isAppRoot ? appRelativePath : rootRelativePath);
+
+/**
+ * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
+ **/
+const nextConfig = {
+  reactStrictMode: true,
+  // Fix lỗi resolution của Nx trong Next.js 15+ / Turbopack
+  serverExternalPackages: [
+    'nx',
+    '@nx/key',
+    '@nx/powerpack-license',
+    '@swc/wasm',
+    '@angular-devkit/architect',
+    '@angular-devkit/core',
+    '@angular-devkit/schematics',
+    '@nx/devkit',
+    '@nx/react',
+    '@nx/next',
+  ],
+  webpack: (config) => {
+    config.resolve.alias['@nx/key'] = false;
+    config.resolve.alias['@nx/powerpack-license'] = false;
+    return config;
+  },
+  output: 'standalone',
+};
+
+module.exports = composePlugins(withNx, withNextIntl)(nextConfig);
+</file>
+
+<file path=".gitignore">
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.nx/cache
+.nx/workspace-data
+
+# Next.js
+.next
+out
+
+#env
+.env
+</file>
+
+<file path="tsconfig.base.json">
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flowmaster/shared-types": ["libs/shared-types/src/index.ts"],
+      "@/*": ["apps/web/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
+</file>
+
+<file path="apps/api/src/app/app.module.ts">
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+import { HrmModule } from './modules/hrm/hrm.module';
+import { SalesModule } from './modules/sales/sales.module';
+import { PurchasingModule } from './modules/purchasing/purchasing.module';
+import { FinanceModule } from './modules/finance/finance.module';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import { AuthModule } from './modules/auth/auth.module';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        // host: config.get('POSTGRES_HOST'),
+        // port: +config.get('POSTGRES_PORT'),
+        // username: config.get('POSTGRES_USER'),
+        // password: config.get('POSTGRES_PASSWORD'),
+        // database: config.get('POSTGRES_DB'),
+        url: config.get<string>('DATABASE_URL'),
+
+        ssl: true,
+        extra: {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        },
+        autoLoadEntities: true,
+        synchronize: true, // ⚠️ CẢNH BÁO: Chỉ dùng khi Dev. Nó sẽ tự sửa bảng DB. Tắt khi chạy thật.
+      }),
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_URI'),
+      }),
+    }),
+    HrmModule,
+    SalesModule,
+    PurchasingModule,
+    FinanceModule,
+    InventoryModule,
+    AuthModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+</file>
+
+<file path="apps/api/src/main.ts">
+/**
+ * This is not a production server yet!
+ * This is only a minimal backend to get started.
+ */
+
+import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app/app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const globalPrefix = 'api';
+  app.setGlobalPrefix(globalPrefix);
+
+  app.enableCors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
+
+  const config = new DocumentBuilder()
+    .setTitle('FlowMaster ERP API')
+    .setDescription('The FlowMaster ERP API description')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document);
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+  );
+  Logger.log(
+    `📄 Swagger documentation is available at: http://localhost:${port}/api/docs`
+  );
+}
+
+bootstrap();
+</file>
+
+<file path="apps/web/src/config/colors.ts">
+export const appColors = {
+  // 1. Màu hệ thống (Bắt buộc phải có) ok
+  transparent: "transparent",
+  current: "currentColor",
+  white: "#FFFFFF",
+  black: "#000000",
+
+  // 2. Màu thương hiệu của FlowMaster ok
+  brand: {
+    DEFAULT: "#0F172A",
+    light: "#334155",
+    dark: "#020617",
+  },
+
+  // 3. Màu trạng thái
+  success: "#22C55E",
+  warning: "#F59E0B",
+  error:   "#EF4444",
+  info:    "#3B82F6",
+
+  // 4. Các biến màu của Shadcn UI (Bắt buộc giữ để UI không vỡ)
+  // Chúng ta map nó vào biến CSS Variable gốc
+  border: "hsl(var(--border))",
+  input: "hsl(var(--input))",
+  ring: "hsl(var(--ring))",
+  background: "hsl(var(--background))",
+  foreground: "hsl(var(--foreground))",
+  primary: {
+    DEFAULT: "hsl(var(--primary))",
+    foreground: "hsl(var(--primary-foreground))",
+  },
+  secondary: {
+    DEFAULT: "hsl(var(--secondary))",
+    foreground: "hsl(var(--secondary-foreground))",
+  },
+  destructive: {
+    DEFAULT: "hsl(var(--destructive))",
+    foreground: "hsl(var(--destructive-foreground))",
+  },
+  muted: {
+    DEFAULT: "hsl(var(--muted))",
+    foreground: "hsl(var(--muted-foreground))",
+  },
+  accent: {
+    DEFAULT: "hsl(var(--accent))",
+    foreground: "hsl(var(--accent-foreground))",
+  },
+  popover: {
+    DEFAULT: "hsl(var(--popover))",
+    foreground: "hsl(var(--popover-foreground))",
+  },
+  card: {
+    DEFAULT: "hsl(var(--card))",
+    foreground: "hsl(var(--card-foreground))",
+  },
+} as const;
 </file>
 
 <file path="nx.json">
@@ -3983,23 +4555,24 @@ export function sharedTypes(): string {
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.0",
     "@next/eslint-plugin-next": "^16.0.1",
-    "@nx/eslint": "22.3.3",
-    "@nx/eslint-plugin": "22.3.3",
-    "@nx/jest": "22.3.3",
-    "@nx/js": "22.3.3",
+    "@nx/eslint": "22.5.4",
+    "@nx/eslint-plugin": "22.5.4",
+    "@nx/jest": "22.5.4",
+    "@nx/js": "22.5.4",
     "@nx/key": "^5.0.0",
-    "@nx/nest": "^22.3.3",
-    "@nx/next": "^22.3.3",
-    "@nx/node": "22.3.3",
-    "@nx/web": "22.3.3",
-    "@nx/webpack": "22.3.3",
-    "@nx/workspace": "22.3.3",
-    "@swc-node/register": "~1.9.1",
-    "@swc/cli": "~0.6.0",
-    "@swc/core": "~1.5.7",
-    "@swc/helpers": "~0.5.11",
+    "@nx/nest": "22.5.4",
+    "@nx/next": "22.5.4",
+    "@nx/node": "22.5.4",
+    "@nx/web": "22.5.4",
+    "@nx/webpack": "22.5.4",
+    "@nx/workspace": "22.5.4",
+    "@swc-node/register": "1.11.1",
+    "@swc/cli": "^0.8.1",
+    "@swc/core": "^1.15.24",
+    "@swc/helpers": "0.5.18",
     "@swc/wasm": "^1.15.10",
     "@types/jest": "^30.0.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "20.19.9",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
@@ -4015,7 +4588,7 @@ export function sharedTypes(): string {
     "jest-environment-node": "^30.0.2",
     "jest-util": "^30.0.2",
     "jsonc-eslint-parser": "^2.1.0",
-    "nx": "22.3.3",
+    "nx": "22.5.4",
     "postcss": "8.4.38",
     "prettier": "~3.6.2",
     "tailwindcss": "3.4.3",
@@ -4037,6 +4610,7 @@ export function sharedTypes(): string {
     "@nestjs/swagger": "^11.2.5",
     "@nestjs/typeorm": "^11.0.0",
     "@radix-ui/react-slot": "^1.2.4",
+    "@reduxjs/toolkit": "^2.11.2",
     "@types/bcrypt": "^6.0.0",
     "@types/passport-jwt": "^4.0.1",
     "axios": "^1.6.0",
@@ -4045,6 +4619,8 @@ export function sharedTypes(): string {
     "class-validator": "^0.14.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^1.7.0",
     "mongoose": "^9.1.4",
     "next": "~16.0.1",
     "next-intl": "^4.7.0",
@@ -4054,6 +4630,8 @@ export function sharedTypes(): string {
     "pg": "^8.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "redux-saga": "^1.4.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "swagger-ui-express": "^5.0.1",
@@ -4061,112 +4639,6 @@ export function sharedTypes(): string {
     "tailwindcss-animate": "^1.0.7",
     "typeorm": "^0.3.28"
   }
-}
-</file>
-
-<file path="README.md">
-# FlowmasterErp
-
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
-
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
-
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Finish your remote caching setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/fFZj7jvFkc)
-
-
-## Run tasks
-
-To run tasks with Nx use:
-
-```sh
-npx nx <target> <project-name>
-```
-
-For example:
-
-```sh
-npx nx build myproject
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
-```
-
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
-
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
-
-# Generate a library
-npx nx g @nx/react:lib some-lib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-</file>
-
-<file path="tsconfig.base.json">
-{
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@flowmaster/shared-types": ["libs/shared-types/src/index.ts"]
-    }
-  },
-  "@/*": ["apps/web/src/*"],
-  "exclude": ["node_modules", "tmp"]
 }
 </file>
 

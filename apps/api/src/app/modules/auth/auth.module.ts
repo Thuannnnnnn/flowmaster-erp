@@ -7,10 +7,12 @@ import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
 import { HrmModule } from '../hrm/hrm.module';
+import { RoleModule } from '../hrm/role.module';
 
 @Module({
   imports: [
     HrmModule,
+    RoleModule,
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

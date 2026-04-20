@@ -7,6 +7,8 @@ import { Role } from './entities/role.entity';
 import { Attendance } from './entities/attendance.entity';
 import { EmployeeService } from './employee.service';
 import { EmployeeController } from './employee.controller';
+import { PermissionModule } from './permission.module';
+import { RoleModule } from './role.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { EmployeeController } from './employee.controller';
       Role,
       Attendance
     ]),
+    PermissionModule,
+    RoleModule,
   ],
   controllers: [EmployeeController],
   providers: [EmployeeService],

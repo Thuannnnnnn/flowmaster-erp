@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Permission } from './permission.entity';
 
 @Entity('roles')
 export class Role {
@@ -14,8 +15,13 @@ export class Role {
   @Column({ default: true })
   is_active: boolean;
 
-  @Column({ type: 'jsonb', nullable: true })
-  permissions: any; // Using any for JSONB content, or define a specific interface
+  @ManyToMany(() => Permission)
+  @JoinTable({
+    name: 'role_permissions',
+    joinColumn: { name: 'role_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'permission_id', referencedColumnName: 'id' },
+  })
+  permissions: Permission[];
 
   @Column({ default: false })
   is_system: boolean;
